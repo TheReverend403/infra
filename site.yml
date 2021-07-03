@@ -17,7 +17,7 @@
         - poetry
 
     - role: cappuccino
-      tags: capuccino
+      tags: cappuccino
 
     - role: rehome
       tags: rehome
