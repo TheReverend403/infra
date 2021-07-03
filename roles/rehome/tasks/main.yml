@@ -1,0 +1,82 @@
+---
+- include_vars: main.yml
+
+- name: Create user
+  user:
+    name: rehome
+
+- name: Create app directory
+  file:
+    path: "{{ app_dir }}"
+    state: directory
+    owner: rehome
+    group: rehome
+    mode: 0750
+
+- name: Pull git repo
+  become: yes
+  become_user: rehome
+  register: gitclone
+  git:
+    repo: "git@github.com:TheReverend403/rehome.git"
+    dest: "{{ app_dir }}"
+    accept_hostkey: yes
+  notify: stop rehome
+
+- meta: flush_handlers
+
+- name: Update dependencies
+  become: yes
+  become_user: rehome
+  when: gitclone.changed
+  command:
+    chdir: "{{ app_dir }}"
+    cmd: "{{ item }} install"
+  with_items:
+    - poetry
+    - yarn
+
+- name: Ensure config directory exists
+  file:
+    path: "{{ app_dir }}/config"
+    state: directory
+    owner: rehome
+    group: rehome
+    mode: 0700
+
+- name: Configure
+  become: yes
+  become_user: rehome
+  template:
+    src: config.yml.j2
+    dest: "{{ app_dir }}/config/config.yml"
+    mode: 0600
+  notify: restart rehome
+
+- meta: flush_handlers
+
+- name: Build assets
+  become: yes
+  become_user: rehome
+  when: gitclone.changed
+  command:
+    chdir: "{{ app_dir }}"
+    cmd: "poetry run flask assets {{ item }}"
+  with_items:
+    - clean
+    - build
+
+- name: Run database migrations
+  become: yes
+  become_user: rehome
+  when: gitclone.changed
+  command:
+    chdir: "{{ app_dir }}"
+    cmd: "poetry run flask db migrate"
+
+- name: Start service
+  become: yes
+  service:
+    name: "flask@rehome"
+    state: started
+    enabled: yes

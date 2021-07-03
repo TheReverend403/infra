@@ -1,0 +1,10 @@
+---
+- name: restart rehome
+  service:
+    name: flask@rehome
+    state: restarted
+
+- name: stop rehome
+  service:
+    name: flask@rehome
+    state: stopped

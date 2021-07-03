@@ -1,0 +1,33 @@
+---
+- include_vars: main.yml
+
+- name: Get setup script
+  register: installscript
+  get_url:
+    url: https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
+    dest: /tmp/get-poetry.py
+    force: yes
+
+- name: Install to {{ poetry_home }}
+  command: python /tmp/get-poetry.py --no-modify-path --force --yes
+  environment:
+    POETRY_HOME: "{{ poetry_home }}"
+  when: installscript.changed
+
+- name: Set world-readable permissions
+  file:
+    path: "{{ poetry_home }}"
+    mode: u=rwX,g=rX,o=rX
+    recurse: yes
+
+- name: Set executable permissions
+  file:
+    path: "{{ poetry_home }}/bin/poetry"
+    state: file
+    mode: a+x
+
+- name: Create /usr/local/bin symlink
+  file:
+    src: "{{ poetry_home }}/bin/poetry"
+    path: /usr/local/bin/poetry
+    state: link

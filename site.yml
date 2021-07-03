@@ -1,0 +1,28 @@
+---
+- name: Apply common configuration to all nodes
+  hosts: all
+  roles:
+    - common
+
+- name: Deploy firefly
+  hosts: firefly
+  roles:
+    - role: poetry
+      tags:
+        - cappuccino
+        - rehome
+        - pste
+        - gentoogram
+        - poetry
+
+    - role: cappuccino
+      tags: capuccino
+
+    - role: rehome
+      tags: rehome
+
+    - role: pste
+      tags: pste
+
+    - role: gentoogram
+      tags: gentoogram

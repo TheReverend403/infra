@@ -1,0 +1,10 @@
+---
+- name: restart pste
+  service:
+    name: flask@pste
+    state: restarted
+
+- name: stop pste
+  service:
+    name: flask@pste
+    state: stopped

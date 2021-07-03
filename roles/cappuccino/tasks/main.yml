@@ -1,0 +1,48 @@
+---
+- include_vars: main.yml
+
+- name: Create user
+  user:
+    name: cappuccino
+
+- name: Create app directory
+  file:
+    path: "{{ app_dir }}"
+    state: directory
+    owner: cappuccino
+    group: cappuccino
+    mode: 0750
+
+- name: Pull git repo
+  become: yes
+  become_user: cappuccino
+  register: gitclone
+  git:
+    repo: https://github.com/FoxDev/cappuccino
+    dest: "{{ app_dir }}"
+    accept_hostkey: yes
+  notify: stop cappuccino
+
+- meta: flush_handlers
+
+- name: Update dependencies
+  become: yes
+  become_user: cappuccino
+  when: gitclone.changed
+  command:
+    chdir: "{{ app_dir }}"
+    cmd: "poetry install"
+
+- name: Run database migrations
+  become: yes
+  become_user: cappuccino
+  when: gitclone.changed
+  command:
+    chdir: "{{ app_dir }}"
+    cmd: "poetry run alembic upgrade head"
+
+- name: Start service
+  service:
+    name: cappuccino
+    state: started
+    enabled: yes

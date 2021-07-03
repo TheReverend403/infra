@@ -1,0 +1,10 @@
+---
+- name: restart
+  service:
+    name: gentoogram
+    state: restarted
+
+- name: stop
+  service:
+    name: gentoogram
+    state: stopped

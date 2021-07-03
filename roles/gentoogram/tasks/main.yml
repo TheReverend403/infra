@@ -1,0 +1,51 @@
+---
+- include_vars: main.yml
+
+- name: Create user
+  user:
+    name: gentoogram
+
+- name: Create app directory
+  file:
+    path: "{{ app_dir }}"
+    state: directory
+    owner: gentoogram
+    group: gentoogram
+    mode: 0750
+
+- name: Pull git repo
+  become: yes
+  become_user: gentoogram
+  register: gitclone
+  git:
+    repo: https://github.com/TheReverend403/gentoogram-bot
+    dest: "{{ app_dir }}"
+    accept_hostkey: yes
+  notify: stop gentoogram
+
+- meta: flush_handlers
+
+- name: Update dependencies
+  become: yes
+  become_user: gentoogram
+  when: gitclone.changed
+  command:
+    chdir: "{{ app_dir }}"
+    cmd: "poetry install"
+  
+- name: Configure
+  become: yes
+  become_user: gentoogram
+  template:
+    src: settings.yml.j2
+    dest: "{{ app_dir }}/settings.yml"
+    mode: 0600
+  notify: restart gentoogram
+
+- meta: flush_handlers
+
+- name: Ensure service is running
+  service:
+    name: gentoogram
+    state: started
+    enabled: yes

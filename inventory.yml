@@ -1,0 +1,25 @@
+all:
+  hosts:
+    firefly:
+      ansible_host: firefly.revthefox.co.uk
+    ark:
+      ansible_host: ark.lwatson.dev
+    wolverine:
+      ansible_host: wolverine.notoriousdev.com
+  children:
+    ndev:
+      hosts:
+        wolverine:
+    foxdev:
+      hosts:
+        firefly:
+        ark:
+    webservers:
+      hosts:
+        firefly:
+        wolverine:
+    dns:
+      hosts:
+        firefly:
+        wolverine:
+        ark:

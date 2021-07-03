@@ -1,0 +1,6 @@
+---
+- name: Configure XDG base dirs
+  template:
+    src: profile.d/xdg.sh.j2
+    dest: /etc/profile.d/xdg.sh
+    mode: 0644
