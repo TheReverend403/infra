@@ -1,0 +1,27 @@
+---
+- name: Speedtest
+  hosts: all
+
+  tasks:
+    - name: Get speedtest script
+      get_url:
+        url: https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+        dest: /tmp/ansible-speedtest
+        force: yes
+
+    - name: Run speedtest
+      command: python /tmp/ansible-speedtest --simple
+      register: output
+      changed_when: false
+
+    - name: Ping speed
+      debug:
+        msg: "{{ output.stdout_lines[0] }}"
+
+    - name: Download speed
+      debug:
+        msg: "{{ output.stdout_lines[1] }}"
+
+    - name: Upload speed
+      debug:
+        msg: "{{ output.stdout_lines[2] }}"

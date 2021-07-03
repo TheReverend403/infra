@@ -2,7 +2,8 @@
 - name: Apply common configuration to all nodes
   hosts: all
   roles:
-    - common
+    - role: common
+      tags: common
 
 - name: Deploy firefly
   hosts: firefly
