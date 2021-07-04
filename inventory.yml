@@ -15,12 +15,3 @@ all:
       hosts:
         firefly:
         ark:
-    webservers:
-      hosts:
-        firefly:
-        wolverine:
-    dns:
-      hosts:
-        firefly:
-        wolverine:
-        ark:
