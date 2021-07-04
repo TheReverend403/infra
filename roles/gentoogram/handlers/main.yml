@@ -1,10 +1,10 @@
 ---
-- name: restart
+- name: restart gentoogram
   service:
     name: gentoogram
     state: restarted
 
-- name: stop
+- name: stop gentoogram
   service:
     name: gentoogram
     state: stopped

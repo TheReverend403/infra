@@ -1,5 +1,4 @@
 ---
-app_dir: /srv/pste
 pste_min_url_length: 5
 pste_enable_registration: false
 pste_user_storage_limit: 1073741824
