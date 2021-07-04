@@ -1,19 +1,19 @@
 ---
 - name: Create user
   user:
-    name: cappuccino
+    name: "{{ app_user }}"
 
 - name: Create app directory
   file:
     path: "{{ app_dir }}"
     state: directory
-    owner: cappuccino
-    group: cappuccino
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
     mode: 0750
 
 - name: Pull git repo
   become: yes
-  become_user: cappuccino
+  become_user: "{{ app_user }}"
   register: gitclone
   git:
     repo: https://github.com/FoxDev/cappuccino
@@ -25,7 +25,7 @@
 
 - name: Update dependencies
   become: yes
-  become_user: cappuccino
+  become_user: "{{ app_user }}"
   when: gitclone.changed
   command:
     chdir: "{{ app_dir }}"
@@ -33,7 +33,7 @@
 
 - name: Run database migrations
   become: yes
-  become_user: cappuccino
+  become_user: "{{ app_user }}"
   when: gitclone.changed
   command:
     chdir: "{{ app_dir }}"

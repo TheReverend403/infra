@@ -1,21 +1,19 @@
 ---
-- include_vars: main.yml
-
 - name: Create user
   user:
-    name: rehome
+    name: "{{ app_user }}"
 
 - name: Create app directory
   file:
     path: "{{ app_dir }}"
     state: directory
-    owner: rehome
-    group: rehome
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
     mode: 0750
 
 - name: Pull git repo
   become: yes
-  become_user: rehome
+  become_user: "{{ app_user }}"
   register: gitclone
   git:
     repo: "git@github.com:TheReverend403/rehome.git"
@@ -27,7 +25,7 @@
 
 - name: Update dependencies
   become: yes
-  become_user: rehome
+  become_user: "{{ app_user }}"
   when: gitclone.changed
   command:
     chdir: "{{ app_dir }}"
@@ -40,13 +38,13 @@
   file:
     path: "{{ app_dir }}/config"
     state: directory
-    owner: rehome
-    group: rehome
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
     mode: 0700
 
 - name: Configure
   become: yes
-  become_user: rehome
+  become_user: "{{ app_user }}"
   template:
     src: config.yml.j2
     dest: "{{ app_dir }}/config/config.yml"
@@ -57,7 +55,7 @@
 
 - name: Build assets
   become: yes
-  become_user: rehome
+  become_user: "{{ app_user }}"
   when: gitclone.changed
   command:
     chdir: "{{ app_dir }}"
@@ -68,7 +66,7 @@
 
 - name: Run database migrations
   become: yes
-  become_user: rehome
+  become_user: "{{ app_user }}"
   when: gitclone.changed
   command:
     chdir: "{{ app_dir }}"
@@ -77,6 +75,6 @@
 - name: Start service
   become: yes
   service:
-    name: "flask@rehome"
+    name: flask@rehome
     state: started
     enabled: yes

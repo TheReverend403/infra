@@ -1,23 +1,21 @@
 ---
-- include_vars: main.yml
-
 - name: Create user
   become: yes
   user:
-    name: pste
+    name: "{{ app_user }}"
 
 - name: Create app directory
   become: yes
   file:
     path: "{{ app_dir }}"
     state: directory
-    owner: pste
-    group: pste
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
     mode: 0750
 
 - name: Pull git repo
   become: yes
-  become_user: pste
+  become_user: "{{ app_user }}"
   register: gitclone
   git:
     repo: https://github.com/FoxDev/pste
@@ -29,7 +27,7 @@
 
 - name: Update dependencies
   become: yes
-  become_user: pste
+  become_user: "{{ app_user }}"
   when: gitclone.changed
   command:
     chdir: "{{ app_dir }}"
@@ -37,7 +35,7 @@
 
 - name: Build assets
   become: yes
-  become_user: pste
+  become_user: "{{ app_user }}"
   when: gitclone.changed
   command:
     chdir: "{{ app_dir }}"
@@ -50,8 +48,8 @@
   file:
     path: "{{ app_dir }}/config"
     state: directory
-    owner: pste
-    group: pste
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
     mode: 0700
 
 - name: Configure
@@ -64,7 +62,7 @@
 
 - name: Run database migrations
   become: yes
-  become_user: pste
+  become_user: "{{ app_user }}"
   when: gitclone.changed
   command:
     chdir: "{{ app_dir }}"

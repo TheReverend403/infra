@@ -1,21 +1,19 @@
 ---
-- include_vars: main.yml
-
 - name: Create user
   user:
-    name: gentoogram
+    name: "{{ app_user }}"
 
 - name: Create app directory
   file:
     path: "{{ app_dir }}"
     state: directory
-    owner: gentoogram
-    group: gentoogram
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
     mode: 0750
 
 - name: Pull git repo
   become: yes
-  become_user: gentoogram
+  become_user: "{{ app_user }}"
   register: gitclone
   git:
     repo: https://github.com/TheReverend403/gentoogram-bot
@@ -27,7 +25,7 @@
 
 - name: Update dependencies
   become: yes
-  become_user: gentoogram
+  become_user: "{{ app_user }}"
   when: gitclone.changed
   command:
     chdir: "{{ app_dir }}"
@@ -35,7 +33,7 @@
   
 - name: Configure
   become: yes
-  become_user: gentoogram
+  become_user: "{{ app_user }}"
   template:
     src: settings.yml.j2
     dest: "{{ app_dir }}/settings.yml"

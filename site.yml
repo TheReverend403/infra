@@ -8,32 +8,14 @@
 - name: Deploy firefly
   hosts: firefly
   roles:
-    - role: poetry
-      tags:
-        - cappuccino
-        - rehome
-        - pste
-        - gentoogram
-        - poetry
-      vars:
-        poetry_home: /opt/poetry
-
     - role: cappuccino
       tags: cappuccino
-      vars:
-        app_dir: /srv/cappuccino
 
     - role: rehome
       tags: rehome
-      vars:
-        app_dir: /srv/rehome
 
     - role: pste
       tags: pste
-      vars:
-        app_dir: /srv/pste
 
     - role: gentoogram
       tags: gentoogram
-      vars:
-        app_dir: /srv/gentoogram

@@ -1,0 +1,8 @@
+---
+app_dir: /srv/rehome
+app_user: rehome
+
+rehome_social_links: {}
+rehome_database: rehome
+rehome_database_user: rehome
+rehome_database_password: ""

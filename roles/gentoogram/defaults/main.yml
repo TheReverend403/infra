@@ -1,0 +1,10 @@
+app_dir: /srv/gentoogram
+app_user: gentoogram
+
+gentoogram_admins: []
+gentoogram_chats: []
+gentoogram_antispam_threshold: 2
+gentoogram_username_rules: []
+gentoogram_message_rules: []
+gentoogram_telegram_key: ""
+gentoogram_sentry_dsn: ""
