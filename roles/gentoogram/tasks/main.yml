@@ -1,23 +1,23 @@
 ---
 - name: Create user
   user:
-    name: "{{ app_user }}"
+    name: "{{ gentoogram_user }}"
 
 - name: Create app directory
   file:
-    path: "{{ app_dir }}"
+    path: "{{ gentoogram_dir }}"
     state: directory
-    owner: "{{ app_user }}"
-    group: "{{ app_user }}"
+    owner: "{{ gentoogram_user }}"
+    group: "{{ gentoogram_user }}"
     mode: 0750
 
 - name: Pull git repo
   become: yes
-  become_user: "{{ app_user }}"
+  become_user: "{{ gentoogram_user }}"
   register: gitclone
   git:
     repo: https://github.com/TheReverend403/gentoogram-bot
-    dest: "{{ app_dir }}"
+    dest: "{{ gentoogram_dir }}"
     accept_hostkey: yes
   notify: stop gentoogram
 
@@ -25,18 +25,18 @@
 
 - name: Update dependencies
   become: yes
-  become_user: "{{ app_user }}"
+  become_user: "{{ gentoogram_user }}"
   when: gitclone.changed
   command:
-    chdir: "{{ app_dir }}"
+    chdir: "{{ gentoogram_dir }}"
     cmd: "poetry install"
   
 - name: Configure
   become: yes
-  become_user: "{{ app_user }}"
+  become_user: "{{ gentoogram_user }}"
   template:
     src: settings.yml.j2
-    dest: "{{ app_dir }}/settings.yml"
+    dest: "{{ gentoogram_dir }}/settings.yml"
     mode: 0600
   notify: restart gentoogram
 

@@ -1,23 +1,23 @@
 ---
 - name: Create user
   user:
-    name: "{{ app_user }}"
+    name: "{{ rehome_user }}"
 
 - name: Create app directory
   file:
-    path: "{{ app_dir }}"
+    path: "{{ rehome_dir }}"
     state: directory
-    owner: "{{ app_user }}"
-    group: "{{ app_user }}"
+    owner: "{{ rehome_user }}"
+    group: "{{ rehome_user }}"
     mode: 0750
 
 - name: Pull git repo
   become: yes
-  become_user: "{{ app_user }}"
+  become_user: "{{ rehome_user }}"
   register: gitclone
   git:
     repo: "git@github.com:TheReverend403/rehome.git"
-    dest: "{{ app_dir }}"
+    dest: "{{ rehome_dir }}"
     accept_hostkey: yes
   notify: stop rehome
 
@@ -25,10 +25,10 @@
 
 - name: Update dependencies
   become: yes
-  become_user: "{{ app_user }}"
+  become_user: "{{ rehome_user }}"
   when: gitclone.changed
   command:
-    chdir: "{{ app_dir }}"
+    chdir: "{{ rehome_dir }}"
     cmd: "{{ item }} install"
   with_items:
     - poetry
@@ -36,18 +36,18 @@
 
 - name: Ensure config directory exists
   file:
-    path: "{{ app_dir }}/config"
+    path: "{{ rehome_dir }}/config"
     state: directory
-    owner: "{{ app_user }}"
-    group: "{{ app_user }}"
+    owner: "{{ rehome_user }}"
+    group: "{{ rehome_user }}"
     mode: 0700
 
 - name: Configure
   become: yes
-  become_user: "{{ app_user }}"
+  become_user: "{{ rehome_user }}"
   template:
     src: config.yml.j2
-    dest: "{{ app_dir }}/config/config.yml"
+    dest: "{{ rehome_dir }}/config/config.yml"
     mode: 0600
   notify: restart rehome
 
@@ -55,10 +55,10 @@
 
 - name: Build assets
   become: yes
-  become_user: "{{ app_user }}"
+  become_user: "{{ rehome_user }}"
   when: gitclone.changed
   command:
-    chdir: "{{ app_dir }}"
+    chdir: "{{ rehome_dir }}"
     cmd: "poetry run flask assets {{ item }}"
   with_items:
     - clean
@@ -66,10 +66,10 @@
 
 - name: Run database migrations
   become: yes
-  become_user: "{{ app_user }}"
+  become_user: "{{ rehome_user }}"
   when: gitclone.changed
   command:
-    chdir: "{{ app_dir }}"
+    chdir: "{{ rehome_dir }}"
     cmd: "poetry run flask db migrate"
 
 - name: Start service

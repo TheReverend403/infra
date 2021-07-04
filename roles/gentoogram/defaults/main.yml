@@ -1,5 +1,5 @@
-app_dir: /srv/gentoogram
-app_user: gentoogram
+gentoogram_dir: /srv/gentoogram
+gentoogram_user: gentoogram
 
 gentoogram_admins: []
 gentoogram_chats: []

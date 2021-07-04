@@ -2,24 +2,24 @@
 - name: Create user
   become: yes
   user:
-    name: "{{ app_user }}"
+    name: "{{ pste_user }}"
 
 - name: Create app directory
   become: yes
   file:
-    path: "{{ app_dir }}"
+    path: "{{ pste_dir }}"
     state: directory
-    owner: "{{ app_user }}"
-    group: "{{ app_user }}"
+    owner: "{{ pste_user }}"
+    group: "{{ pste_user }}"
     mode: 0750
 
 - name: Pull git repo
   become: yes
-  become_user: "{{ app_user }}"
+  become_user: "{{ pste_user }}"
   register: gitclone
   git:
     repo: https://github.com/FoxDev/pste
-    dest: "{{ app_dir }}"
+    dest: "{{ pste_dir }}"
     accept_hostkey: yes
   notify: stop pste
 
@@ -27,18 +27,18 @@
 
 - name: Update dependencies
   become: yes
-  become_user: "{{ app_user }}"
+  become_user: "{{ pste_user }}"
   when: gitclone.changed
   command:
-    chdir: "{{ app_dir }}"
+    chdir: "{{ pste_dir }}"
     cmd: "poetry install -E postgresql -E gunicorn"
 
 - name: Build assets
   become: yes
-  become_user: "{{ app_user }}"
+  become_user: "{{ pste_user }}"
   when: gitclone.changed
   command:
-    chdir: "{{ app_dir }}"
+    chdir: "{{ pste_dir }}"
     cmd: "poetry run flask assets {{ item }}"
   with_items:
     - clean
@@ -46,26 +46,26 @@
 
 - name: Ensure config directory exists
   file:
-    path: "{{ app_dir }}/config"
+    path: "{{ pste_dir }}/config"
     state: directory
-    owner: "{{ app_user }}"
-    group: "{{ app_user }}"
+    owner: "{{ pste_user }}"
+    group: "{{ pste_user }}"
     mode: 0700
 
 - name: Configure
   template:
     src: settings.yml.j2
-    dest: "{{ app_dir }}/config/settings.yml"
+    dest: "{{ pste_dir }}/config/settings.yml"
   notify: restart pste
 
 - meta: flush_handlers
 
 - name: Run database migrations
   become: yes
-  become_user: "{{ app_user }}"
+  become_user: "{{ pste_user }}"
   when: gitclone.changed
   command:
-    chdir: "{{ app_dir }}"
+    chdir: "{{ pste_dir }}"
     cmd: "poetry run flask db upgrade"
 
 - name: Start service

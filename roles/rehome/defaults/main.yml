@@ -1,6 +1,6 @@
 ---
-app_dir: /srv/rehome
-app_user: rehome
+rehome_dir: /srv/rehome
+rehome_user: rehome
 
 rehome_social_links: {}
 rehome_database: rehome
