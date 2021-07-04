@@ -7,6 +7,8 @@ all:
       ansible_host: ark.lwatson.dev
     wolverine:
       ansible_host: wolverine.notoriousdev.com
+    serenity:
+      ansible_connection: local
   children:
     ndev:
       hosts:
