@@ -21,9 +21,7 @@
     repo: https://github.com/FoxDev/pste
     dest: "{{ pste_dir }}"
     accept_hostkey: yes
-  notify: stop pste
-
-- meta: flush_handlers
+  notify: restart pste
 
 - name: Update dependencies
   become: yes
@@ -58,8 +56,6 @@
     dest: "{{ pste_dir }}/config/settings.yml"
   notify: restart pste
 
-- meta: flush_handlers
-
 - name: Run database migrations
   become: yes
   become_user: "{{ pste_user }}"
@@ -68,7 +64,10 @@
     chdir: "{{ pste_dir }}"
     cmd: "poetry run flask db upgrade"
 
-- name: Start service
+- name: Flush handlers
+  meta: flush_handlers
+
+- name: Ensure service is started and enabled
   become: yes
   service:
     name: flask@pste

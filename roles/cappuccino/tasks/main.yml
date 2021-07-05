@@ -19,9 +19,7 @@
     repo: https://github.com/FoxDev/cappuccino
     dest: "{{ cappuccino_dir }}"
     accept_hostkey: yes
-  notify: stop cappuccino
-
-- meta: flush_handlers
+  notify: restart cappuccino
 
 - name: Update dependencies
   become: yes
@@ -39,7 +37,10 @@
     chdir: "{{ cappuccino_dir }}"
     cmd: "poetry run alembic upgrade head"
 
-- name: Start service
+- name: Flush handlers
+  meta: flush_handlers
+
+- name: Ensure service is started and enabled
   service:
     name: cappuccino
     state: started

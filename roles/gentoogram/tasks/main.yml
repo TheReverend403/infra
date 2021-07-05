@@ -19,9 +19,7 @@
     repo: https://github.com/TheReverend403/gentoogram-bot
     dest: "{{ gentoogram_dir }}"
     accept_hostkey: yes
-  notify: stop gentoogram
-
-- meta: flush_handlers
+  notify: restart gentoogram
 
 - name: Update dependencies
   become: yes
@@ -39,10 +37,11 @@
     dest: "{{ gentoogram_dir }}/settings.yml"
     mode: 0600
   notify: restart gentoogram
+  
+- name: Flush handlers
+  meta: flush_handlers
 
-- meta: flush_handlers
-
-- name: Ensure service is running
+- name: Ensure service is started and enabled
   service:
     name: gentoogram
     state: started

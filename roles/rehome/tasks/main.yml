@@ -19,9 +19,7 @@
     repo: "git@github.com:TheReverend403/rehome.git"
     dest: "{{ rehome_dir }}"
     accept_hostkey: yes
-  notify: stop rehome
-
-- meta: flush_handlers
+  notify: restart rehome
 
 - name: Update dependencies
   become: yes
@@ -51,8 +49,6 @@
     mode: 0600
   notify: restart rehome
 
-- meta: flush_handlers
-
 - name: Build assets
   become: yes
   become_user: "{{ rehome_user }}"
@@ -72,8 +68,10 @@
     chdir: "{{ rehome_dir }}"
     cmd: "poetry run flask db migrate"
 
-- name: Start service
-  become: yes
+- name: Flush handlers
+  meta: flush_handlers
+
+- name: Ensure service is started and enabled
   service:
     name: flask@rehome
     state: started

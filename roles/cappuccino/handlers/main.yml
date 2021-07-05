@@ -1,5 +1,5 @@
 ---
-- name: stop cappuccino
+- name: restart cappuccino
   service:
     name: cappuccino
-    state: stopped
+    state: restarted

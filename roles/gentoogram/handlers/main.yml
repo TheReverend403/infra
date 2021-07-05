@@ -3,8 +3,3 @@
   service:
     name: gentoogram
     state: restarted
-
-- name: stop gentoogram
-  service:
-    name: gentoogram
-    state: stopped
