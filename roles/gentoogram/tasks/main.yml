@@ -30,6 +30,7 @@
     cmd: "poetry install"
   
 - name: Configure
+  tags: configuration
   become: yes
   become_user: "{{ gentoogram_user }}"
   template:

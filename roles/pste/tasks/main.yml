@@ -43,6 +43,7 @@
     - build
 
 - name: Ensure config directory exists
+  tags: configuration
   file:
     path: "{{ pste_dir }}/config"
     state: directory
@@ -51,6 +52,7 @@
     mode: 0700
 
 - name: Configure
+  tags: configuration
   template:
     src: settings.yml.j2
     dest: "{{ pste_dir }}/config/settings.yml"
