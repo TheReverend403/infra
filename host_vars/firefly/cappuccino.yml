@@ -1,4 +1,20 @@
 ---
+cappuccino_includes:
+  - cappuccino.sentry
+  - cappuccino.nickserv
+  - cappuccino.urlinfo
+  - cappuccino.rice
+  - cappuccino.lastfm
+  - cappuccino.fun
+  - cappuccino.catfacts
+  - cappuccino.sed
+  - cappuccino.ai
+  - cappuccino.seen
+  - cappuccino.execshell
+  - cappuccino.triggers
+  - irc3.plugins.ctcp
+  - irc3.plugins.autocommand
+
 cappuccino_autojoins:
   - "#cappuccino"
   - "#rice"
