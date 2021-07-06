@@ -1,7 +1,25 @@
 ---
 - name: Create user
+  register: new_user
   user:
     name: "{{ rehome_user }}"
+
+- name: Create .ssh directory
+  become: yes
+  become_user: "{{ rehome_user }}"
+  when: new_user.changed
+  file:
+    path: "{{ ansible_env.HOME }}/.ssh"
+    state: directory
+    mode: 0700
+
+- name: Install GitHub deploy key
+  become: yes
+  become_user: "{{ rehome_user }}"
+  copy:
+    dest: "~/.ssh/id_rsa"
+    src: id_rsa
+    mode: 0600
 
 - name: Create app directory
   file:
