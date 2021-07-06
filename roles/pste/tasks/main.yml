@@ -1,11 +1,9 @@
 ---
 - name: Create user
-  become: yes
   user:
     name: "{{ pste_user }}"
 
 - name: Create app directory
-  become: yes
   file:
     path: "{{ pste_dir }}"
     state: directory
