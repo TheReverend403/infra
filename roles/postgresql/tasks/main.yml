@@ -1,0 +1,36 @@
+---
+- name: Create database user
+  community.postgresql.postgresql_user:
+    name: "{{ postgresql_target_user }}"
+    password: "{{ postgresql_target_user_password }}"
+    role_attr_flags: NOCREATEDB,NOSUPERUSER,NOCREATEROLE
+    login_password: "{{ postgresql_login_password }}"
+    login_user: "{{ postgresql_login_user }}"
+  environment:
+    PGOPTIONS: "-c password_encryption=scram-sha-256"
+
+- name: CREATE DATABASE {{ postgresql_target_database }}
+  community.postgresql.postgresql_db:
+    name: "{{ postgresql_target_database }}"
+    owner: "{{ postgresql_target_user }}"
+    login_password: "{{ postgresql_login_password }}"
+    login_user: "{{ postgresql_login_user }}"
+
+- name: GRANT ALL ON DATABASE {{ postgresql_target_database }} TO {{ postgresql_target_user }}
+  community.postgresql.postgresql_privs:
+    db: "{{ postgresql_target_database }}"
+    privs: ALL
+    type: database
+    role: "{{ postgresql_target_user }}"
+    login_password: "{{ postgresql_login_password }}"
+    login_user: "{{ postgresql_login_user }}"
+
+- name: REVOKE CONNECT ON DATABASE {{ postgresql_target_database }} FROM public
+  community.postgresql.postgresql_privs:
+    db: "{{ postgresql_target_database }}"
+    privs: CONNECT
+    type: database
+    role: public
+    state: absent
+    login_password: "{{ postgresql_login_password }}"
+    login_user: "{{ postgresql_login_user }}"
