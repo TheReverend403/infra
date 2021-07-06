@@ -34,7 +34,7 @@
   become: yes
   become_user: "{{ gentoogram_user }}"
   template:
-    src: settings.yml.j2
+    src: config.yml.j2
     dest: "{{ gentoogram_dir }}/settings.yml"
     mode: 0600
   notify: restart gentoogram
