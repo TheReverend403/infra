@@ -1,2 +1,61 @@
 cappuccino_dir: /srv/cappuccino
 cappuccino_user: cappuccino
+
+cappuccino_nick: cappuccino
+cappuccino_realname: cappuccino
+cappuccino_username: cappy
+cappuccino_host: irc.rizon.net
+cappuccino_port: 6697
+cappuccino_ssl: true
+cappuccino_ssl_verify: CERT_NONE
+cappuccino_includes:
+  - cappuccino.sentry
+  - cappuccino.nickserv
+  - cappuccino.urlinfo
+  - cappuccino.rice
+  - cappuccino.lastfm
+  - cappuccino.fun
+  - cappuccino.catfacts
+  - cappuccino.sed
+  - cappuccino.ai
+  - cappuccino.seen
+  - cappuccino.execshell
+  - cappuccino.triggers
+  - irc3.plugins.ctcp
+  - irc3.plugins.autocommand
+
+cappuccino_autojoins: []
+
+cappuccino_autocommands: []
+
+cappuccino_flood_burst: 2
+cappuccino_flood_rate: 1
+cappuccino_flood_rate_delay: 1
+
+cappuccino_nickserv_password: ""
+
+cappuccino_lastfm_api_key: ""
+
+cappuccino_ignore_hostnames: []
+
+cappuccino_fake_useragent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+cappuccino_fake_useragent_hostnames:
+  - twitter.com
+  - t.co
+
+cappuccino_command_char: .
+cappuccino_command_masks: {}
+
+cappuccino_ai_max_reply_length: 200
+cappuccino_ai_max_loaded_lines: 100000
+cappuccino_ai_word_blacklist: []
+
+cappuccino_sentry_dsn: ""
+
+cappuccino_userdb_http_server: false
+cappuccino_userdb_http_host: 127.0.0.1
+cappuccino_userdb_http_port: 1337
+
+cappuccino_database_user: cappuccino
+cappuccino_database_password: ""
+cappuccino_database: cappuccino

@@ -29,6 +29,16 @@
     chdir: "{{ cappuccino_dir }}"
     cmd: "poetry install"
 
+- name: Configure
+  tags: configuration
+  become: yes
+  become_user: "{{ cappuccino_user }}"
+  template:
+    src: config.ini.j2
+    dest: "{{ cappuccino_dir }}/config.ini"
+    mode: 0600
+  notify: restart cappuccino
+
 - name: Run database migrations
   become: yes
   become_user: "{{ cappuccino_user }}"
