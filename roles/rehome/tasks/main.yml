@@ -84,9 +84,9 @@
   include_role:
     name: postgresql
   vars:
-    postgresql_target_user: "{{ rehome_database_user }}"
-    postgresql_target_user_password: "{{ rehome_database_password }}"
-    postgresql_target_database: "{{ rehome_database }}"
+    postgresql_app_user: "{{ rehome_database_user }}"
+    postgresql_app_user_password: "{{ rehome_database_password }}"
+    postgresql_app_database: "{{ rehome_database }}"
 
 - name: Run database migrations
   become: yes

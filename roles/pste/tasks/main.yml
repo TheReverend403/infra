@@ -60,9 +60,9 @@
   include_role:
     name: postgresql
   vars:
-    postgresql_target_user: "{{ pste_database_user }}"
-    postgresql_target_user_password: "{{ pste_database_password }}"
-    postgresql_target_database: "{{ pste_database }}"
+    postgresql_app_user: "{{ pste_database_user }}"
+    postgresql_app_user_password: "{{ pste_database_password }}"
+    postgresql_app_database: "{{ pste_database }}"
 
 - name: Run database migrations
   become: yes

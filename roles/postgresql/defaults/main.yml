@@ -1,6 +1,6 @@
 postgresql_login_user: postgres
 postgresql_login_password: ""
 
-postgresql_target_user: ""
-postgresql_target_user_password: ""
-postgresql_target_database: ""
+postgresql_app_user: ""
+postgresql_app_user_password: ""
+postgresql_app_database: ""
