@@ -1,5 +1,5 @@
 ---
-- name: Create database user
+- name: CREATE ROLE {{ postgresql_target_user }}
   community.postgresql.postgresql_user:
     name: "{{ postgresql_target_user }}"
     password: "{{ postgresql_target_user_password }}"
