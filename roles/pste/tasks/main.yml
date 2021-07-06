@@ -29,7 +29,7 @@
   when: gitclone.changed
   command:
     chdir: "{{ pste_dir }}"
-    cmd: "poetry install -E postgresql -E gunicorn"
+    cmd: "poetry install"
 
 - name: Build assets
   become: yes
