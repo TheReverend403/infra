@@ -1,5 +1,5 @@
 ---
 - name: restart rehome
-  service:
-    name: flask@rehome
+  systemd:
+    name: rehome
     state: restarted

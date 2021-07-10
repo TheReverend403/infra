@@ -72,12 +72,8 @@
     chdir: "{{ pste_dir }}"
     cmd: "poetry run flask db upgrade"
 
-- name: Flush handlers
-  meta: flush_handlers
-
-- name: Ensure service is started and enabled
-  become: yes
-  service:
-    name: flask@pste
-    state: started
-    enabled: yes
+- name: Configure systemd unit
+  include_role:
+    name: systemd-unit
+  vars:
+    systemd_service: pste

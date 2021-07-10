@@ -55,11 +55,8 @@
     chdir: "{{ cappuccino_dir }}"
     cmd: "poetry run alembic upgrade head"
 
-- name: Flush handlers
-  meta: flush_handlers
-
-- name: Ensure service is started and enabled
-  service:
-    name: cappuccino
-    state: started
-    enabled: yes
+- name: Configure systemd unit
+  include_role:
+    name: systemd-unit
+  vars:
+    systemd_service: cappuccino

@@ -1,0 +1,18 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=Gentoogram Bot
+After=network-online.target
+
+[Service]
+User={{ gentoogram_user }}
+SyslogIdentifier=gentoogram
+ExecStart=/usr/local/bin/poetry run python -m gentoogram
+Restart=always
+WorkingDirectory={{ gentoogram_dir }}
+ProtectSystem=full
+ProtectControlGroups=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

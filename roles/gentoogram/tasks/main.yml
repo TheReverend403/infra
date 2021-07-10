@@ -38,12 +38,9 @@
     dest: "{{ gentoogram_dir }}/settings.yml"
     mode: 0600
   notify: restart gentoogram
-  
-- name: Flush handlers
-  meta: flush_handlers
 
-- name: Ensure service is started and enabled
-  service:
-    name: gentoogram
-    state: started
-    enabled: yes
+- name: Configure systemd unit
+  include_role:
+    name: systemd-unit
+  vars:
+    systemd_service: gentoogram

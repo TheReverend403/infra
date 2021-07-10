@@ -7,7 +7,6 @@
 - name: Create .ssh directory
   become: yes
   become_user: "{{ rehome_user }}"
-  when: new_user.changed
   file:
     path: "~/.ssh"
     state: directory
@@ -96,11 +95,8 @@
     chdir: "{{ rehome_dir }}"
     cmd: "poetry run flask db migrate"
 
-- name: Flush handlers
-  meta: flush_handlers
-
-- name: Ensure service is started and enabled
-  service:
-    name: flask@rehome
-    state: started
-    enabled: yes
+- name: Configure systemd unit
+  include_role:
+    name: systemd-unit
+  vars:
+    systemd_service: rehome
