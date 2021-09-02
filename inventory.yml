@@ -5,6 +5,8 @@ all:
       ansible_host: firefly.revthefox.co.uk
     ark:
       ansible_host: ark.lwatson.dev
+    phoenix:
+      ansible_host: phoenix.notoriousdev.com
     wolverine:
       ansible_host: wolverine.notoriousdev.com
     serenity:
@@ -13,6 +15,7 @@ all:
     ndev:
       hosts:
         wolverine:
+        phoenix:
     foxdev:
       hosts:
         firefly:

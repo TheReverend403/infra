@@ -29,6 +29,12 @@ cappuccino_ignore_hostnames:
   - soundcloud.com
   - i.warosu.org
 
+cappuccino_fake_useragent_hostnames:
+  - twitter.com
+  - ti.co
+  - reddit.com
+  - redd.it
+
 cappuccino_command_masks:
   "*!*@the.one.and.only.revthefox.co.uk": admin
 
