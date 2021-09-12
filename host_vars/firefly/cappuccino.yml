@@ -31,7 +31,7 @@ cappuccino_ignore_hostnames:
 
 cappuccino_fake_useragent_hostnames:
   - twitter.com
-  - ti.co
+  - t.co
   - reddit.com
   - redd.it
 
