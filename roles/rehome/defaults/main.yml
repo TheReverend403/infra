@@ -6,3 +6,4 @@ rehome_profile_links: {}
 rehome_database: rehome
 rehome_database_user: rehome
 rehome_database_password: ""
+rehome_sentry_dsn: ""

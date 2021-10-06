@@ -10,7 +10,7 @@
         force: yes
 
     - name: Run speedtest
-      command: python /tmp/ansible-speedtest --simple
+      command: python3 /tmp/ansible-speedtest --simple
       register: output
       changed_when: false
 

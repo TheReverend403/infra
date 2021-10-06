@@ -4,3 +4,4 @@ rehome:
     external: {{ rehome_profile_links }}
 
 sqlalchemy_database_uri: postgresql://{{ rehome_database_user }}:{{ rehome_database_password }}@/{{ rehome_database }}?host=/run/postgresql
+sentry_dsn: {{ rehome_sentry_dsn }}
