@@ -1,9 +1,12 @@
 ---
 rehome_profile_links:
-  GitHub: https://github.com/TheReverend403
-  Telegram: https://t.me/TheReverend403
-  Steam: https://steamcommunity.com/id/thereverend403
-  Last.fm: https://www.last.fm/user/TheReverend403
+  default:
+    GitHub: https://github.com/TheReverend403
+    Telegram: https://t.me/TheReverend403
+    Steam: https://steamcommunity.com/id/thereverend403
+    Last.fm: https://www.last.fm/user/TheReverend403
+  lwatson_dev:
+    GitHub: https://github.com/TheReverend403
 
 rehome_database_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
