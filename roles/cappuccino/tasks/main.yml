@@ -16,7 +16,7 @@
   become_user: "{{ cappuccino_user }}"
   register: gitclone
   git:
-    repo: https://github.com/FoxDev/cappuccino
+    repo: https://github.com/TheReverend403/cappuccino
     dest: "{{ cappuccino_dir }}"
     accept_hostkey: yes
   notify: restart cappuccino

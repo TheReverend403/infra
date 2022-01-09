@@ -5,6 +5,21 @@
     - role: common
       tags: common
 
+- name: Luna
+  hosts: luna
+  roles:
+    - role: gentoogram
+      tags: gentoogram
+
+    - role: rehome
+      tags: rehome
+
+    - role: pste
+      tags: pste
+
+    - role: cappuccino
+      tags: cappuccino
+
 - name: Deploy firefly
   hosts: firefly
   roles:

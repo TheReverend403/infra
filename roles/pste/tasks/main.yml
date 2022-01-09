@@ -16,7 +16,7 @@
   become_user: "{{ pste_user }}"
   register: gitclone
   git:
-    repo: https://github.com/FoxDev/pste
+    repo: https://github.com/TheReverend403/pste
     dest: "{{ pste_dir }}"
     accept_hostkey: yes
   notify: restart pste

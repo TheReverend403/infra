@@ -3,6 +3,8 @@ all:
   hosts:
     firefly:
       ansible_host: firefly.revthefox.co.uk
+    luna:
+      ansible_host: luna.lwatson.dev
     ark:
       ansible_host: ark.lwatson.dev
     phoenix:
@@ -20,3 +22,4 @@ all:
       hosts:
         firefly:
         ark:
+        luna:
