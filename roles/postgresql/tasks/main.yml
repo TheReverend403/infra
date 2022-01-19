@@ -24,13 +24,3 @@
     role: "{{ postgresql_app_user }}"
     login_password: "{{ postgresql_login_password }}"
     login_user: "{{ postgresql_login_user }}"
-
-- name: REVOKE CONNECT ON DATABASE {{ postgresql_app_database }} FROM public
-  community.postgresql.postgresql_privs:
-    db: "{{ postgresql_app_database }}"
-    privs: CONNECT
-    type: database
-    role: public
-    state: absent
-    login_password: "{{ postgresql_login_password }}"
-    login_user: "{{ postgresql_login_user }}"

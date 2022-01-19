@@ -1,14 +1,17 @@
 ---
 gentoogram_admins:
   - 62199294
+
 gentoogram_chats:
   - -1001053961838
-  
+
+gentoogram_username_rules: []
+
 gentoogram_message_rules:
-    - '.*(I am|is) [0-9]+% gay.*'
-    - '.*(https?://)?(bit\.ly|bit\.do|is\.gd|tinyurl\.com|goo\.gl|ow\.ly|adf\.ly|buff\.ly)/.+'
-    - '.*(https?://)?t\.me/joinchat/.+'
-    - '.*(https?://)?t\.me/.+/\?start(group)?.+'
+  - '.*(I am|is) [0-9]+% gay.*'
+  - '.*(https?://)?(bit\.ly|bit\.do|is\.gd|tinyurl\.com|goo\.gl|ow\.ly|adf\.ly|buff\.ly)/.+'
+  - '.*(https?://)?t\.me/joinchat/.+'
+  - '.*(https?://)?t\.me/.+/\?start(group)?.+'
 
 gentoogram_telegram_key: !vault |
           $ANSIBLE_VAULT;1.1;AES256
@@ -29,4 +32,3 @@ gentoogram_sentry_dsn: !vault |
           34353664613030636161653766393763303535373334653639376262356461626463623462623535
           63376338363961353434613238656266343736373932336565656163346364346539383237636438
           64613732323536613964
-

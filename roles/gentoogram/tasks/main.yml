@@ -1,9 +1,9 @@
 ---
-- name: Create user
+- name: Ensure app user exists
   user:
     name: "{{ gentoogram_user }}"
 
-- name: Create app directory
+- name: Ensure app directory exists
   file:
     path: "{{ gentoogram_dir }}"
     state: directory
@@ -12,33 +12,33 @@
     mode: 0750
 
 - name: Pull git repo
-  become: yes
-  become_user: "{{ gentoogram_user }}"
-  register: gitclone
   git:
     repo: https://github.com/TheReverend403/gentoogram-bot
     dest: "{{ gentoogram_dir }}"
-    accept_hostkey: yes
-  notify: restart gentoogram
+    accept_hostkey: true
+  become: true
+  become_user: "{{ gentoogram_user }}"
+  register: gitclone
+  notify: gentoogram|restart
 
 - name: Update dependencies
-  become: yes
-  become_user: "{{ gentoogram_user }}"
-  when: gitclone.changed
   command:
     chdir: "{{ gentoogram_dir }}"
     cmd: "poetry install"
-  
-- name: Configure
-  tags: configuration
-  become: yes
+  become: true
   become_user: "{{ gentoogram_user }}"
+  when: gitclone.changed
+
+- name: Configure app
   template:
     src: settings.yml.j2
     dest: "{{ gentoogram_dir }}/settings.yml"
     mode: 0600
-  notify: restart gentoogram
-
+  become: true
+  become_user: "{{ gentoogram_user }}"
+  tags: configuration
+  notify: gentoogram|restart
+  
 - name: Configure systemd unit
   include_role:
     name: systemd-unit

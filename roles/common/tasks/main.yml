@@ -1,6 +1,67 @@
 ---
-- name: Configure XDG base dirs
+- name: Configure XDG dirs
   template:
     src: profile.d/xdg.sh.j2
     dest: /etc/profile.d/xdg.sh
     mode: 0644
+
+- name: Ensure /etc/systemd/journald.conf.d exists
+  file:
+    path: /etc/systemd/journald.conf.d
+    state: directory
+    mode: 0755
+
+- name: Configure journald
+  template:
+    src: "{{ item }}"
+    dest: /etc/systemd/journald.conf.d/{{ item | basename | regex_replace('\.j2$', '') }}
+    mode: 0644
+  with_fileglob:
+    - ../templates/etc/systemd/journald.conf.d/*
+  register: journald_config
+
+- name: Restart journald
+  service:
+    name: systemd-journald
+    state: restarted
+  when: journald_config.changed
+
+- name: Ensure /etc/systemd/system.conf.d exists
+  file:
+    path: /etc/systemd/system.conf.d
+    state: directory
+    mode: 0755
+
+- name: Configure systemd
+  template:
+    src: "{{ item }}"
+    dest: /etc/systemd/system.conf.d/{{ item | basename | regex_replace('\.j2$', '') }}
+    mode: 0644
+  with_fileglob:
+    - ../templates/etc/systemd/system.conf.d/*
+  register: systemd_config
+
+- name: Re-exec systemd
+  when: systemd_config.changed
+  systemd:
+    daemon_reexec: yes
+
+- name: Ensure /etc/sysctl.d/ exists
+  file:
+    path: /etc/sysctl.d/
+    state: directory
+    mode: 0755
+
+- name: Configure sysctl.d
+  template:
+    src: "{{ item }}"
+    dest: /etc/sysctl.d/{{ item | basename | regex_replace('\.j2$', '') }}
+    mode: 0644
+  with_fileglob:
+    - ../templates/etc/sysctl.d/*
+  register: sysctl_config
+
+- name: Reload sysctl
+  when: sysctl_config.changed
+  command: "sysctl -p /etc/sysctl.d/*"
+  failed_when: false

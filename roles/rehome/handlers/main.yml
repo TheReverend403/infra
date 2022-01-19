@@ -1,5 +1,0 @@
----
-- name: restart rehome
-  systemd:
-    name: rehome
-    state: restarted

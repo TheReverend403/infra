@@ -5,32 +5,14 @@
     - role: common
       tags: common
 
-- name: Luna
+- name: Deploy gentoogram-bot
   hosts: luna
   roles:
     - role: gentoogram
       tags: gentoogram
 
-    - role: rehome
-      tags: rehome
-
-    - role: pste
-      tags: pste
-
-    - role: cappuccino
-      tags: cappuccino
-
-- name: Deploy firefly
-  hosts: firefly
+- name: Deploy pste
+  hosts: luna
   roles:
-    - role: cappuccino
-      tags: cappuccino
-
-    - role: rehome
-      tags: rehome
-
     - role: pste
       tags: pste
-
-    - role: gentoogram
-      tags: gentoogram

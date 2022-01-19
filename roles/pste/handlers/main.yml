@@ -1,5 +1,5 @@
 ---
-- name: restart pste
-  service:
-    name: flask@pste
+- name: pste|restart
+  systemd:
+    name: pste.service
     state: restarted

@@ -1,25 +1,23 @@
 ---
 all:
   hosts:
-    firefly:
-      ansible_host: firefly.revthefox.co.uk
+    serenity:
+      ansible_connection: local
+    vm:
+      ansible_host: vm.lwatson.dev
     luna:
       ansible_host: luna.lwatson.dev
     ark:
       ansible_host: ark.lwatson.dev
     phoenix:
       ansible_host: phoenix.notoriousdev.com
-    wolverine:
-      ansible_host: wolverine.notoriousdev.com
-    serenity:
-      ansible_connection: local
   children:
     ndev:
       hosts:
-        wolverine:
         phoenix:
-    foxdev:
+    personal:
       hosts:
-        firefly:
+        vm:
         ark:
         luna:
+        serenity:

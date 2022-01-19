@@ -1,0 +1,10 @@
+#
+# {{ ansible_managed }}
+#
+{% if sysctl_vm_swappiness is defined and sysctl_vm_swappiness != 60 %}
+vm.swappiness = {{ sysctl_vm_swappiness }}
+{% endif %}
+
+{% if sysctl_vm_overcommit_memory is defined and sysctl_vm_overcommit_memory %}
+vm.overcommit_memory = 1
+{% endif %}

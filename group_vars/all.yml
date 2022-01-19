@@ -1,2 +1,6 @@
 ---
-ansible_become: yes
+ansible_become: true
+ansible_user: lwatson
+ansible_python_interpreter: /usr/bin/python3.9
+journald_retention_sec: 3d
+sysctl_vm_swappiness: 1

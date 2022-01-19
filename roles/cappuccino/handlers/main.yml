@@ -1,5 +1,0 @@
----
-- name: restart cappuccino
-  service:
-    name: cappuccino
-    state: restarted
