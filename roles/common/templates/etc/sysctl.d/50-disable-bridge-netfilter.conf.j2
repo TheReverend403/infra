@@ -3,6 +3,7 @@
 #
 {% if br_netfilter_disable is defined and br_netfilter_disable %}
 # https://serverfault.com/questions/963759/docker-breaks-libvirt-bridge-network
+# https://wiki.libvirt.org/page/Net.bridge.bridge-nf-call_and_sysctl.conf
 net.bridge.bridge-nf-call-ip6tables = 0
 net.bridge.bridge-nf-call-iptables = 0
 net.bridge.bridge-nf-call-arptables = 0
