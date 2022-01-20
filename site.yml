@@ -4,9 +4,3 @@
   roles:
     - role: common
       tags: common
-
-- name: Deploy gentoogram-bot
-  hosts: luna
-  roles:
-    - role: gentoogram
-      tags: gentoogram

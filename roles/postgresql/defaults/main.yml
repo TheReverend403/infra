@@ -1,7 +1,0 @@
----
-postgresql_login_user: postgres
-postgresql_login_password: ""
-
-postgresql_app_user: ""
-postgresql_app_user_password: ""
-postgresql_app_database: ""
