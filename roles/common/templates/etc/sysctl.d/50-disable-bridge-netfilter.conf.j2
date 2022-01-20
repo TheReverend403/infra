@@ -1,6 +1,9 @@
 #
 # {{ ansible_managed }}
 #
+{% if br_netfilter_disable is defined and br_netfilter_disable %}
+# https://serverfault.com/questions/963759/docker-breaks-libvirt-bridge-network
 net.bridge.bridge-nf-call-ip6tables = 0
 net.bridge.bridge-nf-call-iptables = 0
 net.bridge.bridge-nf-call-arptables = 0
+{% endif %}
