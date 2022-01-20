@@ -10,9 +10,3 @@
   roles:
     - role: gentoogram
       tags: gentoogram
-
-- name: Deploy pste
-  hosts: luna
-  roles:
-    - role: pste
-      tags: pste

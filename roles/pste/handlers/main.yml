@@ -1,5 +1,0 @@
----
-- name: pste|restart
-  systemd:
-    name: pste.service
-    state: restarted
