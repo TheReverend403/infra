@@ -21,3 +21,13 @@ all:
         ark:
         luna:
         serenity:
+    servers:
+      hosts:
+        vm:
+        ark:
+        luna:
+        phoenix:
+    vms:
+      hosts:
+        vm:
+        ark:
