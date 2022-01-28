@@ -15,16 +15,11 @@ all:
     ndev:
       hosts:
         phoenix:
-    personal:
+    workstations:
       hosts:
-        vm:
-        ark:
-        luna:
         serenity:
     servers:
       hosts:
-        vm:
-        ark:
         luna:
         phoenix:
     vms:
