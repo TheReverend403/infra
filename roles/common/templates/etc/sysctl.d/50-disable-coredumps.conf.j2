@@ -1,4 +1,7 @@
 #
 # {{ ansible_managed }}
 #
+
+{% if disable_coredumps %}
 kernel.core_pattern = /dev/null
+{% endif %}

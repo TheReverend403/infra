@@ -1,5 +1,5 @@
 ---
-sysctl_vm_overcommit_memory: true
+sysctl_vm_overcommit_memory: 1
 ansible_become_pass: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           31353666303033663231346436623231626262376661386434353461353332613538623035373636
