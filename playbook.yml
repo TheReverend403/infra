@@ -3,3 +3,8 @@
   hosts: all
   roles:
     - role: common
+
+- name: Set up ZFS maintenance
+  hosts: zfs
+  roles:
+    - role: zfs-maintenance

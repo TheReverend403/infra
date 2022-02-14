@@ -26,3 +26,8 @@ all:
       hosts:
         vm:
         ark:
+    zfs:
+      hosts:
+        luna:
+        phoenix:
+        serenity:

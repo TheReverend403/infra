@@ -1,4 +1,11 @@
 ---
+zfs_scrub_pools:
+  - serenity
+zfs_trim_pools:
+  - serenity
+zfs_scrub_schedule: Sat *-*-* 18:00
+zfs_trim_schedule: Sun *-*-* 18:00
+
 sysctl_vm_swappiness: 200
 ansible_user: rev
 ansible_become_pass: !vault |

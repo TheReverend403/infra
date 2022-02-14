@@ -1,4 +1,9 @@
 ---
+zfs_scrub_pools:
+  - luna
+  - luna-data
+zfs_scrub_schedule: Mon *-*-* 2:00
+
 sysctl_vm_overcommit_memory: 1
 br_netfilter_disable: true
 ansible_become_pass: !vault |
