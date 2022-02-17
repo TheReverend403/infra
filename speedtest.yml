@@ -1,6 +1,6 @@
 ---
 - name: Speedtest
-  hosts: all
+  hosts: all,!vm
 
   tasks:
     - name: Get speedtest script
