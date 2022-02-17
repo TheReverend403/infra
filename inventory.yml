@@ -11,6 +11,8 @@ all:
       ansible_host: ark.lwatson.dev
     phoenix:
       ansible_host: phoenix.notoriousdev.com
+    nova:
+      ansible_host: nova.ark.wg
   children:
     ndev:
       hosts:
@@ -18,6 +20,7 @@ all:
     workstations:
       hosts:
         serenity:
+        nova:
     servers:
       hosts:
         luna:
@@ -31,3 +34,4 @@ all:
         luna:
         phoenix:
         serenity:
+        nova:
