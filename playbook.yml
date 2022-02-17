@@ -8,3 +8,13 @@
   hosts: zfs
   roles:
     - role: zfs-maintenance
+
+- name: Set up msmtp as default mta
+  hosts:
+    - serenity
+    - luna
+    - phoenix
+    - ark
+    - nova
+  roles:
+    - role: msmtp

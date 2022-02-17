@@ -1,0 +1,42 @@
+---
+- name: Install msmtp (Debian)
+  apt:
+    pkg:
+      - msmtp
+      - msmtp-mta
+      - bsd-mailx
+  when: ansible_distribution == "Debian"
+
+- name: Install msmtp (Gentoo)
+  portage:
+    package:
+      - mail-mta/msmtp
+      - mail-client/mailx
+    state: present
+  when: ansible_distribution == "Gentoo"
+
+- name: Get sendmail version
+  command: "sendmail --version"
+  register: sendmail_version
+  changed_when: false
+
+- name: Ensure sendmail wraps msmtp
+  assert:
+    that: "'msmtp' in sendmail_version.stdout_lines[0]"
+
+- name: Ensure msmtp config directory exists
+  file:
+    path: /root/.config/msmtp
+    recurse: yes
+    state: directory
+
+- name: Configure msmtp
+  template:
+    src: msmtp/config.j2
+    dest: /root/.config/msmtp/config
+
+- name: Ensure msmtp is the default mta in mail.rc
+  lineinfile:
+    path: /etc/mail.rc
+    regexp: '^set mta=/usr/bin/msmtp$'
+    line: "set mta=/usr/bin/msmtp"

@@ -1,0 +1,20 @@
+# {{ ansible_managed }}
+
+##
+defaults
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+##
+
+##
+account        {{ msmtp_account_name }}
+host           {{ msmtp_host }}
+port           {{ msmtp_port }}
+from           {{ msmtp_from_addr }}
+user           {{ msmtp_user }}
+password       {{ msmtp_password }}
+tls            {{ 'on' if msmtp_tls else 'off' }}
+tls_starttls   {{ 'on' if msmtp_starttls else 'off' }}
+auth           {{ 'on' if msmtp_auth else 'off' }}
+##
+
+account default : {{ msmtp_account_name }}
