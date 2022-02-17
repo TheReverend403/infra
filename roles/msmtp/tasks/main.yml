@@ -5,6 +5,8 @@
       - msmtp
       - msmtp-mta
       - bsd-mailx
+      - ca-certificates
+    state: present
   when: ansible_distribution == "Debian"
 
 - name: Install msmtp (Gentoo)
@@ -12,6 +14,7 @@
     package:
       - mail-mta/msmtp
       - mail-client/mailx
+      - app-misc/ca-certificates
     state: present
   when: ansible_distribution == "Gentoo"
 
