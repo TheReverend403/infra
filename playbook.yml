@@ -10,11 +10,6 @@
     - role: zfs-maintenance
 
 - name: Set up msmtp as default mta
-  hosts:
-    - serenity
-    - luna
-    - phoenix
-    - ark
-    - nova
+  hosts: all
   roles:
     - role: msmtp
