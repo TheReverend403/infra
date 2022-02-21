@@ -4,12 +4,12 @@
   roles:
     - role: common
 
-- name: Set up ZFS maintenance
-  hosts: zfs
-  roles:
-    - role: zfs-maintenance
-
 - name: Set up msmtp as default mta
   hosts: all
   roles:
     - role: msmtp
+
+- name: Set up ZFS maintenance
+  hosts: zfs
+  roles:
+    - role: zfs-maintenance
