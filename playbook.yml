@@ -13,3 +13,10 @@
   hosts: zfs
   roles:
     - role: zfs-maintenance
+
+- name: Set up Telegraf
+  hosts:
+    - luna
+    - vms
+  roles:
+    - role: telegraf
