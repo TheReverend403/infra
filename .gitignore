@@ -3,3 +3,4 @@ cache/
 .vscode/
 
 roles/zfs-maintenance
+roles/telegraf
