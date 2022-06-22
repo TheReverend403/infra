@@ -2,21 +2,28 @@
 - name: Apply common configuration to all nodes
   hosts: all
   roles:
-    - role: common
+    - common
 
 - name: Set up msmtp as default mta
   hosts: all
   roles:
-    - role: msmtp
+    - msmtp
 
 - name: Set up ZFS maintenance
   hosts: zfs
   roles:
-    - role: zfs-maintenance
+    - zfs-maintenance
 
 - name: Set up Telegraf
   hosts:
     - luna
     - vms
   roles:
-    - role: telegraf
+    - telegraf
+
+- name: initramfs hooks
+  hosts:
+    - phoenix
+  roles:
+    - systemd-boot
+    - kernel-hooks
