@@ -4,3 +4,5 @@ cache/
 
 roles/zfs-maintenance
 roles/telegraf
+roles/kernel-hooks
+roles/systemd-boot
