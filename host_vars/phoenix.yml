@@ -44,3 +44,5 @@ msmtp_password: !vault |
 efi_mirror_source: /dev/disk/by-id/scsi-36d4ae520b57101002891aa6061310ea2-part1
 efi_mirror_targets:
   - /dev/disk/by-id/scsi-36d4ae520b57101002891aa8a63b24a22-part1
+
+boot_kernel_cmdline: "root=ZFS=phoenix/ROOT/debian loglevel=3 scsi_mod.use_blk_mq=1 systemd.unified_cgroup_hierarchy=1 rd.systemd.gpt_auto=0 systemd.gpt_auto=0 transparent_hugepage=madvise"
