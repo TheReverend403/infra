@@ -14,10 +14,10 @@
 - name: Configure journald
   template:
     src: "{{ item }}"
-    dest: /etc/systemd/journald.conf.d/{{ item | basename | regex_replace('\.j2$', '') }}
+    dest: /etc/systemd/journald.conf.d/{{ item | basename | splitext | first }}
     mode: 0644
   with_fileglob:
-    - templates/etc/systemd/journald.conf.d/*
+    - templates/etc/systemd/journald.conf.d/*.j2
   register: journald_config
 
 - name: Restart journald
@@ -35,10 +35,10 @@
 - name: Configure systemd
   template:
     src: "{{ item }}"
-    dest: /etc/systemd/system.conf.d/{{ item | basename | regex_replace('\.j2$', '') }}
+    dest: /etc/systemd/system.conf.d/{{ item | basename | splitext | first }}
     mode: 0644
   with_fileglob:
-    - templates/etc/systemd/system.conf.d/*
+    - templates/etc/systemd/system.conf.d/*.j2
   register: systemd_config
 
 - name: Re-exec systemd
@@ -55,10 +55,10 @@
 - name: Configure sysctl.d
   template:
     src: "{{ item }}"
-    dest: /etc/sysctl.d/{{ item | basename | regex_replace('\.j2$', '') }}
+    dest: /etc/sysctl.d/{{ item | basename | splitext | first }}
     mode: 0644
   with_fileglob:
-    - templates/etc/sysctl.d/*
+    - templates/etc/sysctl.d/*.j2
   register: sysctl_config
 
 - name: Reload sysctl
