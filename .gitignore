@@ -3,6 +3,7 @@ cache/
 .vscode/
 
 roles/zfs-maintenance
+roles/zfs-install
 roles/telegraf
 roles/kernel-hooks
 roles/systemd-boot

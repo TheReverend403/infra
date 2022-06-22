@@ -27,3 +27,4 @@
   roles:
     - systemd-boot
     - kernel-hooks
+    - zfs-install
