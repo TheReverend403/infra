@@ -9,7 +9,7 @@
         dest: /tmp/ansible-speedtest
 
     - name: Run speedtest
-      command: python3 /tmp/ansible-speedtest --simple
+      command: python3 /tmp/ansible-speedtest --simple --secure
       register: output
       changed_when: false
 

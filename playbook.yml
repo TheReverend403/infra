@@ -9,11 +9,6 @@
   roles:
     - msmtp
 
-- name: Set up ZFS maintenance
-  hosts: zfs
-  roles:
-    - zfs-maintenance
-
 - name: Set up Telegraf
   hosts:
     - luna
@@ -27,4 +22,8 @@
   roles:
     - systemd-boot
     - kernel-hooks
-    - zfs-install
+
+- name: Set up ZFS maintenance
+  hosts: zfs
+  roles:
+    - zfs-maintenance
