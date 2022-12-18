@@ -6,6 +6,8 @@ telegraf_outputs:
       bucket: telegraf
       token: "{{ _influx_token }}"
 
+telegraf_interval: 1s
+telegraf_flush_interval: 5s
 telegraf_inputs:
   - cpu:
       percpu: true

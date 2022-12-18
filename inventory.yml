@@ -3,8 +3,6 @@ all:
   hosts:
     serenity:
       ansible_connection: local
-    vm:
-      ansible_host: vm.lwatson.dev
     luna:
       ansible_host: luna.lwatson.dev
     ark:
@@ -27,7 +25,6 @@ all:
         phoenix:
     vms:
       hosts:
-        vm:
         ark:
     zfs:
       hosts:

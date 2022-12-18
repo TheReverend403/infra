@@ -13,7 +13,10 @@ ansible_become_pass: !vault |
 zfs_scrub_pools:
   - luna
   - luna-data
+zfs_trim_pools:
+  - luna
 zfs_scrub_schedule: Mon *-*-* 2:00
+zfs_trim_schedule: Mon *-*-* 0:00
 
 sysctl_vm_overcommit_memory: 1
 br_netfilter_disable: true

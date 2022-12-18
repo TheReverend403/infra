@@ -20,6 +20,8 @@ _influx_token: !vault |
           36626463326433656231323862356163613966343330316563323963666230623838383830353130
           6161
 
+telegraf_interval: 1s
+telegraf_flush_interval: 5s
 telegraf_outputs:
   - influxdb_v2:
       urls:
