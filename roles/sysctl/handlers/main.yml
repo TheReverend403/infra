@@ -1,5 +1,5 @@
 ---
-- name: sysctl|reload
+- name: sysctl|reload # noqa: name[casing]
+  changed_when: true
   ansible.builtin.command:
-    cmd: "sysctl --system"
-  failed_when: false
+    cmd: "sysctl --system --ignore"
