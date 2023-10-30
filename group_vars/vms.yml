@@ -31,4 +31,3 @@ telegraf_inputs:
         - "eth*"
         - "en*"
         - "br[0-9]"
-

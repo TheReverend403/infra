@@ -1,18 +1,20 @@
 ---
 - name: Speedtest
-  hosts: all,!vm
+  hosts: all
 
   tasks:
     - name: Get speedtest script
-      get_url:
+      ansible.builtin.get_url:
         url: https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
         dest: /tmp/ansible-speedtest
+        mode: 644
 
     - name: Run speedtest
-      command: python3 /tmp/ansible-speedtest --simple --secure
+      ansible.builtin.command:
+        cmd: python3 /tmp/ansible-speedtest --simple --secure
       register: output
       changed_when: false
 
     - name: Results
-      debug:
+      ansible.builtin.debug:
         msg: "{{ output.stdout_lines }}"

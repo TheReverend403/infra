@@ -1,0 +1,13 @@
+---
+- name: Ensure /etc/sysctl.d/ exists
+  ansible.builtin.file:
+    path: /etc/sysctl.d/
+    state: directory
+    mode: "0755"
+
+- name: Configure sysctl.d
+  ansible.builtin.template:
+    src: "etc/sysctl.d/90-ansible.conf.j2"
+    dest: "/etc/sysctl.d/90-ansible.conf"
+    mode: "0644"
+  notify: sysctl|reload

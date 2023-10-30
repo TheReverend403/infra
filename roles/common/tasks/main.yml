@@ -1,67 +1,36 @@
 ---
 - name: Configure XDG dirs
-  template:
+  ansible.builtin.template:
     src: profile.d/xdg.sh.j2
     dest: /etc/profile.d/xdg.sh
-    mode: 0644
+    mode: "0644"
 
 - name: Ensure /etc/systemd/journald.conf.d exists
-  file:
+  ansible.builtin.file:
     path: /etc/systemd/journald.conf.d
     state: directory
-    mode: 0755
+    mode: "0755"
 
 - name: Configure journald
-  template:
+  ansible.builtin.template:
     src: "{{ item }}"
     dest: /etc/systemd/journald.conf.d/{{ item | basename | splitext | first }}
-    mode: 0644
+    mode: "0644"
   with_fileglob:
     - templates/etc/systemd/journald.conf.d/*.j2
-  register: journald_config
-
-- name: Restart journald
-  service:
-    name: systemd-journald
-    state: restarted
-  when: journald_config.changed
+  notify: common.journald|restart
 
 - name: Ensure /etc/systemd/system.conf.d exists
-  file:
+  ansible.builtin.file:
     path: /etc/systemd/system.conf.d
     state: directory
-    mode: 0755
+    mode: "0755"
 
 - name: Configure systemd
-  template:
+  ansible.builtin.template:
     src: "{{ item }}"
     dest: /etc/systemd/system.conf.d/{{ item | basename | splitext | first }}
-    mode: 0644
+    mode: "0644"
   with_fileglob:
     - templates/etc/systemd/system.conf.d/*.j2
-  register: systemd_config
-
-- name: Re-exec systemd
-  when: systemd_config.changed
-  systemd:
-    daemon_reexec: yes
-
-- name: Ensure /etc/sysctl.d/ exists
-  file:
-    path: /etc/sysctl.d/
-    state: directory
-    mode: 0755
-
-- name: Configure sysctl.d
-  template:
-    src: "{{ item }}"
-    dest: /etc/sysctl.d/{{ item | basename | splitext | first }}
-    mode: 0644
-  with_fileglob:
-    - templates/etc/sysctl.d/*.j2
-  register: sysctl_config
-
-- name: Reload sysctl
-  when: sysctl_config.changed
-  command: "sysctl -p /etc/sysctl.d/*"
-  failed_when: false
+  notify: common.systemd|daemon-reexec

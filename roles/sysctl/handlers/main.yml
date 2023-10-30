@@ -1,0 +1,5 @@
+---
+- name: sysctl|reload
+  ansible.builtin.command:
+    cmd: "sysctl -p /etc/sysctl.d/*"
+  failed_when: false

@@ -1,0 +1,10 @@
+#
+# {{ ansible_managed }}
+#
+
+{% for sysctl in [sysctl_default_vars, sysctl_vars]|community.general.lists_mergeby("name") %}
+{% if sysctl.comment is defined %}
+# {{ sysctl.comment }}
+{% endif %}
+{{ sysctl.name }} = {{ sysctl.value }}
+{% endfor %}

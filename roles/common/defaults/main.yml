@@ -1,7 +1,3 @@
 ---
-sysctl_vm_swappiness: 60
-sysctl_vm_overcommit_memory: 0
-journald_system_max_use: ''
+journald_system_max_use: ""
 journald_retention_sec: 7d
-br_netfilter_disable: false
-disable_coredumps: true
