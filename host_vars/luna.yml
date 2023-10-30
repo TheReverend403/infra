@@ -25,7 +25,7 @@ sysctl_vars:
     value: 1
   - name: vm.dirty_background_ratio
     value: 3
-    comment: "https://www.reddit.com/r/linux/comments/17jljjr/comment/k724boy/?utm_source=reddit&utm_medium=web2x&context=3"
+    comment: "https://www.reddit.com/r/linux/comments/17jljjr/comment/k724boy/?context=3"
   - name: vm.dirty_ratio
     value: 10
   - name: net.bridge.bridge-nf-call-arptables

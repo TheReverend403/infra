@@ -7,7 +7,7 @@
       ansible.builtin.get_url:
         url: https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
         dest: /tmp/ansible-speedtest
-        mode: 644
+        mode: "0644"
 
     - name: Run speedtest
       ansible.builtin.command:

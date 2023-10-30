@@ -29,6 +29,18 @@ sysctl_vars:
     value: 4194304
   - name: net.core.wmem_max
     value: 4194304
+  - name: net.ipv4.icmp_echo_ignore_broadcasts
+    value: 1
+  - name: net.ipv4.conf.default.rp_filter
+    value: 1
+  - name: net.ipv4.conf.all.rp_filter
+    value: 1
+  - name: net.ipv4.ip_forward
+    value: 0
+  - name: fs.inotify.max_user_watches
+    value: 524288
+  - name: kernel.sysrq
+    value: 0
 
 msmtp_from_addr: !vault |
   $ANSIBLE_VAULT;1.1;AES256
