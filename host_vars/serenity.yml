@@ -22,9 +22,10 @@ sysctl_vars:
     value: 0
   - name: vm.dirty_background_ratio
     value: 3
-    comment: "https://www.reddit.com/r/linux/comments/17jljjr/comment/k724boy/?utm_source=reddit&utm_medium=web2x&context=3"
+    comment: "https://www.reddit.com/r/linux/comments/17jljjr/comment/k724boy/?context=3"
   - name: vm.dirty_ratio
     value: 10
+    comment: "https://www.reddit.com/r/linux/comments/17jljjr/comment/k724boy/?context=3"
   - name: net.core.rmem_max
     value: 4194304
   - name: net.core.wmem_max

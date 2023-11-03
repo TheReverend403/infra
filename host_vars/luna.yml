@@ -28,13 +28,16 @@ sysctl_vars:
     comment: "https://www.reddit.com/r/linux/comments/17jljjr/comment/k724boy/?context=3"
   - name: vm.dirty_ratio
     value: 10
+    comment: "https://www.reddit.com/r/linux/comments/17jljjr/comment/k724boy/?context=3"
   - name: net.bridge.bridge-nf-call-arptables
     value: 0
     comment: "https://serverfault.com/questions/963759/docker-breaks-libvirt-bridge-network + https://wiki.libvirt.org/page/Net.bridge.bridge-nf-call_and_sysctl.conf"
   - name: net.bridge.bridge-nf-call-ip6tables
     value: 0
+    comment: "https://serverfault.com/questions/963759/docker-breaks-libvirt-bridge-network + https://wiki.libvirt.org/page/Net.bridge.bridge-nf-call_and_sysctl.conf"
   - name: net.bridge.bridge-nf-call-iptables
     value: 0
+    comment: "https://serverfault.com/questions/963759/docker-breaks-libvirt-bridge-network + https://wiki.libvirt.org/page/Net.bridge.bridge-nf-call_and_sysctl.conf"
   - name: net.core.rmem_max
     value: 4194304
   - name: net.core.wmem_max
