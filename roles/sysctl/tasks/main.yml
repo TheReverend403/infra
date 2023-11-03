@@ -6,8 +6,10 @@
     mode: "0755"
 
 - name: Configure sysctl.d
-  ansible.builtin.template:
-    src: "etc/sysctl.d/90-ansible.conf.j2"
-    dest: "/etc/sysctl.d/90-ansible.conf"
-    mode: "0644"
-  notify: sysctl|reload
+  ansible.posix.sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value | default('') }}"
+    state: "{{ item.state | default('present') }}"
+    sysctl_file: "/etc/sysctl.d/90-ansible.conf"
+    sysctl_set: true
+  loop: "{{ [sysctl_default_vars, sysctl_vars] | community.general.lists_mergeby('name') }}"

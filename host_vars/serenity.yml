@@ -39,8 +39,6 @@ sysctl_vars:
     value: 0
   - name: fs.inotify.max_user_watches
     value: 524288
-  - name: kernel.sysrq
-    value: 0
 
 msmtp_from_addr: !vault |
   $ANSIBLE_VAULT;1.1;AES256
