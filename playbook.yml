@@ -10,13 +10,6 @@
   roles:
     - msmtp
 
-- name: Set up Telegraf
-  hosts:
-    - luna
-    - vms
-  roles:
-    - telegraf
-
 # - name: initramfs hooks
 #   hosts:
 #     - phoenix

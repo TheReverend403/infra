@@ -11,6 +11,8 @@ all:
       ansible_host: phoenix.notoriousdev.com
     nova:
       ansible_host: nova.ark.wg
+    monitor:
+      ansible_host: monitor.lwatson.dev
   children:
     ndev:
       hosts:
@@ -26,6 +28,7 @@ all:
     vms:
       hosts:
         ark:
+        monitor:
     zfs:
       hosts:
         luna:

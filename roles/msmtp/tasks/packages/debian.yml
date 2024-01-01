@@ -1,0 +1,9 @@
+---
+- name: Install packages ({{ ansible_distribution }})
+  ansible.builtin.apt:
+    name:
+      - msmtp
+      - msmtp-mta
+      - bsd-mailx
+      - ca-certificates
+    state: present

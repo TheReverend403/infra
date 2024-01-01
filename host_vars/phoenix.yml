@@ -17,7 +17,13 @@ zfs_scrub_schedule: Mon *-*-* 8:00
 
 sysctl_vars:
   - name: vm.swappiness
-    value: 1
+    value: 180
+  - name: vm.watermark_boost_factor
+    value: 0
+  - name: vm.watermark_scale_factor
+    value: 125
+  - name: vm.page-cluster
+    value: 0
   - name: vm.overcommit_memory
     value: 1
   - name: net.core.wmem_max

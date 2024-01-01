@@ -1,22 +1,7 @@
 ---
-- name: Install msmtp (Debian)
-  ansible.builtin.apt:
-    pkg:
-      - msmtp
-      - msmtp-mta
-      - bsd-mailx
-      - ca-certificates
-    state: present
-  when: ansible_distribution == "Debian"
-
-- name: Install msmtp (Gentoo)
-  community.general.portage:
-    package:
-      - mail-mta/msmtp
-      - mail-client/mailx
-      - app-misc/ca-certificates
-    state: present
-  when: ansible_distribution == "Gentoo"
+- name: Install packages
+  ansible.builtin.include_tasks:
+    file: "packages/{{ ansible_distribution | lower }}.yml"
 
 - name: Get sendmail version
   ansible.builtin.command:
