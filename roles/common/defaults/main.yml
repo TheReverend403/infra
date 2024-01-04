@@ -1,3 +1,3 @@
 ---
-journald_system_max_use: ""
-journald_retention_sec: 7d
+journald_system_max_use: "" # noqa: var-naming[no-role-prefix]
+journald_retention_sec: 7d # noqa: var-naming[no-role-prefix]

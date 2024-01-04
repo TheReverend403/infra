@@ -1,5 +1,4 @@
 ---
-
 - name: Install required system package(s)
   ansible.builtin.package:
     name: "{{ _distro_packages[ansible_distribution | lower] }}"
@@ -10,7 +9,7 @@
       debian:
         - virtualenv
 
-- name: Install telegram-send
+- name: Install telegram-send # noqa: package-latest
   ansible.builtin.pip:
     name: telegram-send
     state: latest
