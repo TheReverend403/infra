@@ -1,6 +1,0 @@
----
-- name: Install virtualenv system package ({{ ansible_distribution }})
-  ansible.builtin.package:
-    name:
-      - dev-python/virtualenv
-    state: present

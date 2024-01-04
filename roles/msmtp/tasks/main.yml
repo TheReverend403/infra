@@ -1,7 +1,18 @@
 ---
-- name: Install packages
-  ansible.builtin.include_tasks:
-    file: "packages/{{ ansible_distribution | lower }}.yml"
+- name: Install required system package(s)
+  ansible.builtin.package:
+    name: "{{ _distro_packages[ansible_distribution | lower] }}"
+  vars:
+    _distro_packages:
+      gentoo:
+        - mail-mta/msmtp
+        - mail-client/mailx
+        - app-misc/ca-certificates
+      debian:
+        - msmtp
+        - msmtp-mta
+        - bsd-mailx
+        - ca-certificates
 
 - name: Get sendmail version
   ansible.builtin.command:

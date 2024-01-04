@@ -1,8 +1,14 @@
 ---
 
-- name: Install virtualenv system package
-  ansible.builtin.include_tasks:
-    file: "packages/{{ ansible_distribution | lower }}.yml"
+- name: Install required system package(s)
+  ansible.builtin.package:
+    name: "{{ _distro_packages[ansible_distribution | lower] }}"
+  vars:
+    _distro_packages:
+      gentoo:
+        - dev-python/virtualenv
+      debian:
+        - virtualenv
 
 - name: Install telegram-send
   ansible.builtin.pip:

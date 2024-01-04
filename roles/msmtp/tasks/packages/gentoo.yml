@@ -1,8 +1,0 @@
----
-- name: Install packages ({{ ansible_distribution }})
-  ansible.builtin.package:
-    name:
-      - mail-mta/msmtp
-      - mail-client/mailx
-      - app-misc/ca-certificates
-    state: present
