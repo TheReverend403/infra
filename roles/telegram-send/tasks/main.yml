@@ -15,8 +15,8 @@
   ansible.builtin.file:
     path: /usr/local/bin
     state: directory
-    group: root
     owner: root
+    group: root
     mode: "0755"
 
 - name: Create a symlink to /usr/local/bin
@@ -24,8 +24,8 @@
     src: "{{ tgsend_virtualenv }}/bin/telegram-send"
     dest: "/usr/local/bin/telegram-send"
     state: link
-    group: root
     owner: root
+    group: root
 
 - name: Configure telegram-send
   ansible.builtin.template:
