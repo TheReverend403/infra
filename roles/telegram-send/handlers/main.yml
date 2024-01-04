@@ -1,6 +1,6 @@
 ---
 - name: tgsend|test # noqa: name[casing]
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: "telegram-send -g 'ANSIBLE CONFIG TEST on {{ ansible_hostname }}'"
   when: tgsend_test_config
   changed_when: false
