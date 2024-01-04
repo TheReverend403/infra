@@ -1,4 +1,5 @@
 ---
+
 - name: Install virtualenv system package
   ansible.builtin.include_tasks:
     file: "packages/{{ ansible_distribution | lower }}.yml"
@@ -22,9 +23,9 @@
   ansible.builtin.file:
     src: "{{ tgsend_virtualenv }}/bin/telegram-send"
     dest: "/usr/local/bin/telegram-send"
+    state: link
     group: root
     owner: root
-    state: link
 
 - name: Configure telegram-send
   ansible.builtin.template:
