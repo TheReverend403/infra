@@ -2,7 +2,7 @@
 sysctl_default_vars:
   - name: net.ipv6.route.max_size
     value: 65000
-    comment: "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=861115"
+    comment: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=861115
   - name: kernel.core_pattern
     value: /dev/null
   - name: net.ipv4.tcp_syncookies

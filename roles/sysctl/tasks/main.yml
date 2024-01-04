@@ -10,6 +10,6 @@
     name: "{{ item.name }}"
     value: "{{ item.value | default('') }}"
     state: "{{ item.state | default('present') }}"
-    sysctl_file: "/etc/sysctl.d/90-ansible.conf"
+    sysctl_file: /etc/sysctl.d/90-ansible.conf
     sysctl_set: true
   loop: "{{ sysctl_default_vars | community.general.lists_mergeby(sysctl_vars, 'name') }}"

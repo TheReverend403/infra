@@ -7,4 +7,4 @@ msmtp_host: ""
 msmtp_port: 587
 msmtp_tls: true
 msmtp_starttls: true
-msmtp_account_name: "main"
+msmtp_account_name: main

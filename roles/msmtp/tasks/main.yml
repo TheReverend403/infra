@@ -16,7 +16,7 @@
 
 - name: Get sendmail version
   ansible.builtin.command:
-    cmd: "sendmail --version"
+    cmd: sendmail --version
   register: sendmail_version
   changed_when: false
 
@@ -39,5 +39,5 @@
 - name: Ensure msmtp is the default mta in mail.rc
   ansible.builtin.lineinfile:
     path: /etc/mail.rc
-    regexp: "^set mta=/usr/bin/msmtp$"
-    line: "set mta=/usr/bin/msmtp"
+    regexp: ^set mta=/usr/bin/msmtp$
+    line: set mta=/usr/bin/msmtp
