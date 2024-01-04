@@ -1,0 +1,6 @@
+---
+- name: Install virtualenv system package ({{ ansible_distribution }})
+  ansible.builtin.package:
+    name:
+      - virtualenv
+    state: present

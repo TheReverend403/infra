@@ -12,8 +12,8 @@ zfs_scrub_pools:
   - serenity
 zfs_trim_pools:
   - serenity
-zfs_scrub_schedule: Sat *-*-* 18:00
-zfs_trim_schedule: Sun *-*-* 18:00
+zfs_scrub_schedule: Sat *-*-* 09:00
+zfs_trim_schedule: Sat *-*-* 09:00
 
 sysctl_vars:
   - name: vm.swappiness

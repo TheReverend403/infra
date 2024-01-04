@@ -21,3 +21,8 @@
   hosts: zfs
   roles:
     - zfs-maintenance
+
+- name: Set up telegram-send
+  hosts: all
+  roles:
+    - telegram-send
