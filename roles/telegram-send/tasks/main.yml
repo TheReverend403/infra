@@ -14,7 +14,6 @@
     name: telegram-send
     state: latest
     virtualenv: "{{ tgsend_virtualenv }}"
-    virtualenv_python: "{{ tgsend_virtualenv_python }}"
 
 - name: Ensure /usr/local/bin exists
   ansible.builtin.file:

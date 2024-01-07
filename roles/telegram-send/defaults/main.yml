@@ -1,6 +1,5 @@
 ---
 tgsend_virtualenv: /opt/telegram-send
-tgsend_virtualenv_python: /usr/bin/python3
 tgsend_bot_token: ""
 tgsend_chat_id: ""
 tgsend_test_config: true
