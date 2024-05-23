@@ -4,7 +4,7 @@ ansible_user: lwatson
 ansible_python_interpreter: /usr/bin/python3
 journald_retention_sec: 7d
 
-msmtp_host: smtp.eu.mailgun.org
+msmtp_host: email-smtp.eu-north-1.amazonaws.com
 
 tgsend_bot_token: !vault |
   $ANSIBLE_VAULT;1.1;AES256
