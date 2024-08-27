@@ -1,7 +1,5 @@
 cache/
 mitogen/
 
-roles/zfs-maintenance
-
 .idea/
 .vscode/
