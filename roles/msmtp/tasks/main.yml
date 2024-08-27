@@ -24,12 +24,6 @@
   ansible.builtin.assert:
     that: "'msmtp' in sendmail_version.stdout_lines[0]"
 
-- name: msmtp:mailrc:set_default
-  ansible.builtin.lineinfile:
-    path: /etc/mail.rc
-    regexp: ^set mta=/usr/bin/msmtp$
-    line: set mta=/usr/bin/msmtp
-
 - name: msmtp:config_dir:create
   ansible.builtin.file:
     path: /root/.config/msmtp
@@ -41,3 +35,10 @@
     src: msmtp/config.j2
     dest: /root/.config/msmtp/config
     mode: "0640"
+
+- name: msmtp:mailrc:set_default
+  ansible.builtin.lineinfile:
+    path: /etc/mail.rc
+    regexp: ^set mta=/usr/bin/msmtp$
+    line: set mta=/usr/bin/msmtp
+
