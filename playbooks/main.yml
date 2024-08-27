@@ -10,13 +10,6 @@
   roles:
     - msmtp
 
-# - name: initramfs hooks
-#   hosts:
-#     - phoenix
-#   roles:
-#     - systemd-boot
-#     - kernel-hooks
-
 - name: Set up ZFS maintenance
   hosts: zfs
   roles:
