@@ -1,11 +1,11 @@
 ---
-- name: Ensure /etc/sysctl.d/ exists
+- name: sysctl:config_dir:create
   ansible.builtin.file:
     path: /etc/sysctl.d/
     state: directory
     mode: "0755"
 
-- name: Configure sysctl.d
+- name: sysctl:configure
   ansible.posix.sysctl:
     name: "{{ item.name }}"
     value: "{{ item.value | default('') }}"

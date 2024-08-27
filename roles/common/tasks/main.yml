@@ -1,36 +1,36 @@
 ---
-- name: Configure XDG dirs
+- name: common:profile:xdg_dirs
   ansible.builtin.template:
     src: profile.d/xdg.sh.j2
     dest: /etc/profile.d/xdg.sh
     mode: "0644"
 
-- name: Ensure /etc/systemd/journald.conf.d exists
+- name: common:journald:config_dir:create
   ansible.builtin.file:
     path: /etc/systemd/journald.conf.d
     state: directory
     mode: "0755"
 
-- name: Configure journald
+- name: common:journald:configure
   ansible.builtin.template:
     src: "{{ item }}"
     dest: /etc/systemd/journald.conf.d/{{ item | basename | splitext | first }}
     mode: "0644"
   with_fileglob:
     - templates/etc/systemd/journald.conf.d/*.j2
-  notify: common.journald|restart
+  notify: common:journald|restart
 
-- name: Ensure /etc/systemd/system.conf.d exists
+- name: common:systemd:config_dir:create
   ansible.builtin.file:
     path: /etc/systemd/system.conf.d
     state: directory
     mode: "0755"
 
-- name: Configure systemd
+- name: common:systemd:configure
   ansible.builtin.template:
     src: "{{ item }}"
     dest: /etc/systemd/system.conf.d/{{ item | basename | splitext | first }}
     mode: "0644"
   with_fileglob:
     - templates/etc/systemd/system.conf.d/*.j2
-  notify: common.systemd|daemon-reexec
+  notify: common:systemd|daemon-reexec

@@ -1,5 +1,5 @@
 ---
-- name: Install required system package(s)
+- name: msmtp:dependencies:install
   ansible.builtin.package:
     name: "{{ _distro_packages[ansible_distribution | lower] }}"
   vars:
@@ -14,30 +14,30 @@
         - bsd-mailx
         - ca-certificates
 
-- name: Get sendmail version
+- name: msmtp:sendmail:get_version
   ansible.builtin.command:
     cmd: sendmail --version
   register: sendmail_version
   changed_when: false
 
-- name: Ensure sendmail wraps msmtp
+- name: msmtp:sendmail:check_wrapper
   ansible.builtin.assert:
     that: "'msmtp' in sendmail_version.stdout_lines[0]"
 
-- name: Ensure msmtp config directory exists
+- name: msmtp:mailrc:set_default
+  ansible.builtin.lineinfile:
+    path: /etc/mail.rc
+    regexp: ^set mta=/usr/bin/msmtp$
+    line: set mta=/usr/bin/msmtp
+
+- name: msmtp:config_dir:create
   ansible.builtin.file:
     path: /root/.config/msmtp
     recurse: true
     state: directory
 
-- name: Configure msmtp
+- name: msmtp:configure
   ansible.builtin.template:
     src: msmtp/config.j2
     dest: /root/.config/msmtp/config
     mode: "0640"
-
-- name: Ensure msmtp is the default mta in mail.rc
-  ansible.builtin.lineinfile:
-    path: /etc/mail.rc
-    regexp: ^set mta=/usr/bin/msmtp$
-    line: set mta=/usr/bin/msmtp

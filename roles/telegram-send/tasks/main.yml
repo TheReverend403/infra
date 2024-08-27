@@ -1,5 +1,5 @@
 ---
-- name: Install required system package(s)
+- name: tgsend:dependencies:install
   ansible.builtin.package:
     name: "{{ _distro_packages[ansible_distribution | lower] }}"
   vars:
@@ -9,13 +9,13 @@
       debian:
         - virtualenv
 
-- name: Install telegram-send # noqa: package-latest
+- name: tgsend:install
   ansible.builtin.pip:
     name: telegram-send
     state: latest
     virtualenv: "{{ tgsend_virtualenv }}"
 
-- name: Ensure /usr/local/bin exists
+- name: tgsend:symlink:parent_dir:create
   ansible.builtin.file:
     path: /usr/local/bin
     state: directory
@@ -23,7 +23,7 @@
     group: root
     mode: "0755"
 
-- name: Create a symlink in /usr/local/bin to telegram-send
+- name: tgsend:symlink:create
   ansible.builtin.file:
     src: "{{ tgsend_virtualenv }}/bin/telegram-send"
     dest: /usr/local/bin/telegram-send
@@ -31,7 +31,7 @@
     owner: root
     group: root
 
-- name: Configure telegram-send
+- name: tgsend:configure
   ansible.builtin.template:
     src: telegram-send.conf.j2
     dest: /etc/telegram-send.conf
