@@ -1,7 +1,7 @@
 ---
 - name: sysctl:config_dir:create
   ansible.builtin.file:
-    path: /etc/sysctl.d/
+    path: "{{ __sysctl_file | dirname }}"
     state: directory
     mode: "0755"
 
@@ -10,6 +10,6 @@
     name: "{{ item.name }}"
     value: "{{ item.value | default('') }}"
     state: "{{ item.state | default('present') }}"
-    sysctl_file: /etc/sysctl.d/90-ansible.conf
+    sysctl_file: "{{ __sysctl_file }}"
     sysctl_set: true
-  loop: "{{ sysctl_default_vars | community.general.lists_mergeby(sysctl_vars, 'name') }}"
+  loop: "{{ __sysctl_base_vars | community.general.lists_mergeby(sysctl_vars, 'name') }}"

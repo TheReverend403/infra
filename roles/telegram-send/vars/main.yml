@@ -1,0 +1,5 @@
+__tgsend_system_packages:
+  Gentoo:
+    - dev-python/virtualenv
+  Debian:
+    - virtualenv

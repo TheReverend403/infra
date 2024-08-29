@@ -1,18 +1,7 @@
 ---
 - name: msmtp:dependencies:install
   ansible.builtin.package:
-    name: "{{ _distro_packages[ansible_distribution | lower] }}"
-  vars:
-    _distro_packages:
-      gentoo:
-        - mail-mta/msmtp
-        - mail-client/mailx
-        - app-misc/ca-certificates
-      debian:
-        - msmtp
-        - msmtp-mta
-        - bsd-mailx
-        - ca-certificates
+    name: "{{ __msmtp_system_packages[ansible_distribution] }}"
 
 - name: msmtp:sendmail:get_version
   ansible.builtin.command:
@@ -26,14 +15,14 @@
 
 - name: msmtp:config_dir:create
   ansible.builtin.file:
-    path: /root/.config/msmtp
+    path: "{{ msmtp_config_file | dirname }}"
     recurse: true
     state: directory
 
 - name: msmtp:configure
   ansible.builtin.template:
     src: msmtp/config.j2
-    dest: /root/.config/msmtp/config
+    dest: "{{ msmtp_config_file }}"
     mode: "0640"
 
 - name: msmtp:mailrc:set_default
