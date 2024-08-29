@@ -1,12 +1,12 @@
-#
 # {{ ansible_managed }}
-#
 
 [Journal]
+Storage=persistent
+
 {% if journald_retention_sec is defined %}
 MaxRetentionSec={{ journald_retention_sec }}
-{% endif %}
+{% endif -%}
 
 {% if journald_system_max_use is defined %}
 SystemMaxUse={{ journald_system_max_use }}
-{% endif %}
+{% endif -%}
