@@ -2,12 +2,12 @@
 - name: speedtest:script:download
   ansible.builtin.get_url:
     url: "{{ __speedtest_script_url }}"
-    dest: "{{ __speedtest_download_destination }}"
+    dest: "{{ __speedtest_script_destination }}"
     mode: "0644"
 
 - name: speedtest:run
   ansible.builtin.command:
-    cmd: "python3 {{ __speedtest_download_destination }} --simple --secure"
+    cmd: "python3 {{ __speedtest_script_destination }} --simple --secure"
   register: output
   changed_when: false
 
