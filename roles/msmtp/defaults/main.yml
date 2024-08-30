@@ -1,5 +1,6 @@
 ---
 msmtp_config_file: "/root/.config/msmtp/config"
+msmtp_set_default: true
 # msmtp_from_addr: ""
 # msmtp_user: ""
 # msmtp_password: ""

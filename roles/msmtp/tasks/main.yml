@@ -30,3 +30,4 @@
     path: /etc/mail.rc
     regexp: ^set mta=/usr/bin/msmtp$
     line: set mta=/usr/bin/msmtp
+  when: msmtp_set_default
