@@ -1,0 +1,39 @@
+---
+zfs_scrub_pools:
+  - luna
+  - luna-data
+zfs_trim_pools:
+  - luna
+zfs_scrub_schedule: Mon *-*-* 0:00
+zfs_trim_schedule: Tue *-*-* 0:00
+
+sysctl_vars:
+  - name: vm.swappiness
+    value: 180
+  - name: vm.watermark_boost_factor
+    value: 0
+  - name: vm.watermark_scale_factor
+    value: 125
+  - name: vm.page-cluster
+    value: 0
+  - name: vm.overcommit_memory
+    value: 1
+  - name: vm.dirty_background_ratio
+    value: 3
+    comment: "https://www.reddit.com/r/linux/comments/17jljjr/comment/k724boy/?context=3"
+  - name: vm.dirty_ratio
+    value: 10
+    comment: "https://www.reddit.com/r/linux/comments/17jljjr/comment/k724boy/?context=3"
+  - name: net.bridge.bridge-nf-call-arptables
+    value: 0
+    comment: "https://serverfault.com/questions/963759/docker-breaks-libvirt-bridge-network + https://wiki.libvirt.org/page/Net.bridge.bridge-nf-call_and_sysctl.conf"
+  - name: net.bridge.bridge-nf-call-ip6tables
+    value: 0
+    comment: "https://serverfault.com/questions/963759/docker-breaks-libvirt-bridge-network + https://wiki.libvirt.org/page/Net.bridge.bridge-nf-call_and_sysctl.conf"
+  - name: net.bridge.bridge-nf-call-iptables
+    value: 0
+    comment: "https://serverfault.com/questions/963759/docker-breaks-libvirt-bridge-network + https://wiki.libvirt.org/page/Net.bridge.bridge-nf-call_and_sysctl.conf"
+  - name: net.core.rmem_max
+    value: 4194304
+  - name: net.core.wmem_max
+    value: 4194304

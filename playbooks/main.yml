@@ -1,16 +1,16 @@
 ---
-- name: Apply common configuration to all nodes
+- name: Apply common configuration
   hosts: all
   roles:
     - common
     - sysctl
 
-- name: Set up msmtp as default mta
+- name: Set up msmtp
   hosts: all
   roles:
     - msmtp
 
-- name: Set up ZFS maintenance
+- name: Set up ZFS maintenance systemd units
   hosts: zfs
   roles:
     - zfs-maintenance

@@ -10,20 +10,6 @@ ansible_become_pass: !vault |
   62383366366664343265323062616264373564373036313838623632653735643163373665303737
   39646331316465623635
 
-sysctl_vars:
-  - name: vm.swappiness
-    value: 180
-  - name: vm.watermark_boost_factor
-    value: 0
-  - name: vm.watermark_scale_factor
-    value: 125
-  - name: vm.page-cluster
-    value: 0
-  - name: net.core.rmem_max
-    value: 4194304
-  - name: net.core.wmem_max
-    value: 4194304
-
 msmtp_from_addr: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   35363262383637313035356539393664373061376364353766313766613336656631376666623831

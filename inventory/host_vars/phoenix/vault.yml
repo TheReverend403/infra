@@ -10,35 +10,6 @@ ansible_become_pass: !vault |
   33396235386431393239306266633537346362633264653335343837376432306532343862376338
   36626636333465306233
 
-zfs_scrub_pools:
-  - phoenix
-  - phoenix-data
-zfs_scrub_schedule: Mon *-*-* 8:00
-
-sysctl_vars:
-  - name: vm.swappiness
-    value: 180
-  - name: vm.watermark_boost_factor
-    value: 0
-  - name: vm.watermark_scale_factor
-    value: 125
-  - name: vm.page-cluster
-    value: 0
-  - name: vm.overcommit_memory
-    value: 1
-  - name: net.core.wmem_max
-    value: 512000
-  - name: net.core.rmem_max
-    value: 512000
-  - name: net.core.netdev_max_backlog
-    value: 30000
-  - name: net.ipv4.tcp_timestamps
-    value: 1
-  - name: net.ipv4.tcp_sack
-    value: 1
-  - name: net.ipv4.tcp_window_scaling
-    value: 1
-
 msmtp_from_addr: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   63663366633565353366666331353239353864633838343365303665386232643662383563343038
@@ -61,9 +32,3 @@ msmtp_password: !vault |
   6136653539653666320a353938343830313364633466613463386133383835393231393638383338
   65623666333538623734383762343861356136303330313633393066303064366162646134623164
   6464316262366363386636396132393963336431336364383965
-
-efi_mirror_source: /dev/disk/by-id/scsi-36d4ae520b57101002891aa6061310ea2-part1
-efi_mirror_targets:
-  - /dev/disk/by-id/scsi-36d4ae520b57101002891aa8a63b24a22-part1
-
-boot_kernel_cmdline: "root=ZFS=phoenix/ROOT/debian loglevel=3 scsi_mod.use_blk_mq=1 systemd.unified_cgroup_hierarchy=1 rd.systemd.gpt_auto=0 systemd.gpt_auto=0 transparent_hugepage=madvise"

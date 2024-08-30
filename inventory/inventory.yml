@@ -25,6 +25,8 @@ all:
       hosts:
         luna:
         phoenix:
+        ark:
+        monitor:
     vms:
       hosts:
         ark:
