@@ -1,11 +1,4 @@
 ---
-ansible_become: true
-ansible_user: lwatson
-ansible_python_interpreter: /usr/bin/python3
-journald_retention_sec: 7d
-
-msmtp_host: email-smtp.eu-north-1.amazonaws.com
-
 tgsend_bot_token: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   35666135643164353863373562616636336535363831376532643866303732376365366332333361

@@ -10,12 +10,12 @@
   roles:
     - msmtp
 
-- name: Set up ZFS maintenance systemd units
-  hosts: zfs
-  roles:
-    - zfs-maintenance
-
 - name: Set up telegram-send
   hosts: all
   roles:
     - telegram-send
+
+- name: Set up ZFS maintenance systemd units
+  hosts: zfs
+  roles:
+    - zfs-maintenance
