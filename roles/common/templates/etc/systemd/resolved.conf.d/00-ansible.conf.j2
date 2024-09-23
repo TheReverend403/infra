@@ -3,5 +3,7 @@
 #
 
 [Resolve]
+{% if resolved_secure %}
 DNSSEC=allow-downgrade
 DNSOverTLS=opportunistic
+{% endif %}
