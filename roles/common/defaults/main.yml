@@ -1,4 +1,4 @@
 ---
 # journald_system_max_use: 1G # noqa: var-naming[no-role-prefix]
 # journald_retention_sec: 7d # noqa: var-naming[no-role-prefix]
-resolved_secure: true
+resolved_secure: true # noqa: var-naming[no-role-prefix]
