@@ -5,14 +5,12 @@ all:
       ansible_connection: local
     luna:
       ansible_host: luna.lwatson.dev
-    ark:
-      ansible_host: ark.lwatson.dev
     nova:
-      ansible_host: nova.ark.wg
+      ansible_host: nova.hedgehog-skate.ts.net
     monitor:
       ansible_host: monitor.lwatson.dev
     pi-netmon:
-      ansible_host: pi-netmon.ark.wg
+      ansible_host: pi-netmon.hedgehog-skate.ts.net
   children:
     workstations:
       hosts:
@@ -21,11 +19,9 @@ all:
     servers:
       hosts:
         luna:
-        ark:
         monitor:
     vms:
       hosts:
-        ark:
         monitor:
     zfs:
       hosts:
