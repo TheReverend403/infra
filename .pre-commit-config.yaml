@@ -31,3 +31,11 @@ repos:
         entry: uv run shellcheck
         language: system
         types: [shell]
+
+      - id: ansible-lint
+        name: ansible-lint
+        entry: uv run ansible-lint
+        language: system
+        types: [text]
+        pass_filenames: false
+        always_run: true
