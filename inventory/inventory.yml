@@ -11,6 +11,8 @@ all:
       ansible_host: monitor.lwatson.dev
     pi-netmon:
       ansible_host: pi-netmon.hedgehog-skate.ts.net
+    pi-desktop:
+      ansible_host: pi-desktop.hedgehog-skate.ts.net
   children:
     workstations:
       hosts:
