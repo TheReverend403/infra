@@ -5,6 +5,11 @@
     - common
     - sysctl
 
+- name: Install uv
+  hosts: all
+  roles:
+    - uv
+
 - name: Set up msmtp
   hosts: all
   roles:
