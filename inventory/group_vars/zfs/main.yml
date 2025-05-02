@@ -1,4 +1,4 @@
 ---
 zfs_zed_email_addr: "none"
-zfs_zed_email_prog: "/usr/local/bin/telegram-send"
+zfs_zed_email_prog: "/usr/local/bin/uvx telegram-send"
 zfs_zed_email_opts: "-g --pre --stdin --disable-web-page-preview --silent"

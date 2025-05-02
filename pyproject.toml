@@ -2,12 +2,15 @@
 name = "infra"
 version = "0.1.0"
 requires-python = ">=3.13"
-dependencies = ["ansible-core>=2.18.2"]
+dependencies = [
+    "ansible-core>=2.18.2",
+    "jmespath>=1.0.1",
+]
 
 [dependency-groups]
 dev = [
-    "pre-commit (>=4.0.0,<5.0.0)",
-    "pre-commit-hooks (>=5.0.0,<6.0.0)",
+    "pre-commit>=4.0.0",
+    "pre-commit-hooks>=5.0.0",
     "shellcheck-py>=0.10.0.1",
     "ansible-lint>=25.1.3",
 ]
