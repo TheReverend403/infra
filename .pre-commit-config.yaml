@@ -39,7 +39,7 @@ repos:
 
       - id: "ansible-lint"
         name: "ansible-lint"
-        entry: "ansible-lint"
+        entry: "uv run ansible-lint"
         language: "system"
         types:
           - "text"
