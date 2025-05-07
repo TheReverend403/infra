@@ -1,18 +1,18 @@
 ---
-- name: uv:checkexists
+- name: "uv:checkexists"
   ansible.builtin.stat:
     path: "{{ __uv_bin_dir }}/uv"
-  register: __uv_exists_result
+  register: "__uv_exists_result"
 
-- name: uv:installer:download
+- name: "uv:installer:download"
   ansible.builtin.get_url:
-    url: https://astral.sh/uv/install.sh
+    url: "https://astral.sh/uv/install.sh"
     dest: "{{ __uv_installer_download_dest }}"
     mode: "0755"
-  when: not __uv_exists_result.stat.exists
+  when: "not __uv_exists_result.stat.exists"
   changed_when: false
 
-- name: uv:installer:run
+- name: "uv:installer:run"
   environment:
     INSTALLER_NO_MODIFY_PATH: "1"
     UV_INSTALL_DIR: "{{ __uv_bin_dir }}"

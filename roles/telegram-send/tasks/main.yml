@@ -1,10 +1,10 @@
 ---
-- name: tgsend:configure
+- name: "tgsend:configure"
   ansible.builtin.template:
-    src: telegram-send.conf.j2
-    dest: /etc/telegram-send.conf
-    owner: root
-    group: root
+    src: "telegram-send.conf.j2"
+    dest: "/etc/telegram-send.conf"
+    owner: "root"
+    group: "root"
     mode: "0640"
-  when: tgsend_bot_token and tgsend_chat_id
-  notify: tgsend|test
+  when: "tgsend_bot_token and tgsend_chat_id"
+  notify: "tgsend|test"

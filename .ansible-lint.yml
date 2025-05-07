@@ -1,9 +1,10 @@
+---
 skip_list:
-  - name[casing]
-  - yaml[line-length]
-  - role-name
-  - package-latest
+  - "name[casing]"
+  - "yaml[line-length]"
+  - "role-name"
+  - "package-latest"
 
 exclude_paths:
-  - mitogen
-  - roles/zfs-maintenance
+  - "mitogen"
+  - "roles/zfs-maintenance"

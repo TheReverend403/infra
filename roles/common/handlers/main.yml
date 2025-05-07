@@ -1,14 +1,14 @@
 ---
-- name: common:systemd|daemon-reexec
+- name: "common:systemd|daemon-reexec"
   ansible.builtin.systemd:
     daemon_reexec: true
 
-- name: common:journald|restart
+- name: "common:journald|restart"
   ansible.builtin.service:
-    name: systemd-journald
-    state: restarted
+    name: "systemd-journald"
+    state: "restarted"
 
-- name: common:resolved|restart
+- name: "common:resolved|restart"
   ansible.builtin.service:
-    name: systemd-resolved
-    state: restarted
+    name: "systemd-resolved"
+    state: "restarted"

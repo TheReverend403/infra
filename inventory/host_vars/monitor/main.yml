@@ -1,14 +1,19 @@
 ---
 sysctl_vars:
-  - name: vm.swappiness
+  - name: "vm.swappiness"
     value: 180
-  - name: vm.watermark_boost_factor
+
+  - name: "vm.watermark_boost_factor"
     value: 0
-  - name: vm.watermark_scale_factor
+
+  - name: "vm.watermark_scale_factor"
     value: 125
-  - name: vm.page-cluster
+
+  - name: "vm.page-cluster"
     value: 0
-  - name: net.core.rmem_max
+
+  - name: "net.core.rmem_max"
     value: 4194304
-  - name: net.core.wmem_max
+
+  - name: "net.core.wmem_max"
     value: 4194304

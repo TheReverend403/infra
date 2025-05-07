@@ -1,45 +1,45 @@
 ---
-- name: common:profile:xdg_dirs
+- name: "common:profile:xdg_dirs"
   ansible.builtin.template:
-    src: etc/profile.d/xdg.sh.j2
-    dest: /etc/profile.d/xdg.sh
+    src: "etc/profile.d/xdg.sh.j2"
+    dest: "/etc/profile.d/xdg.sh"
     mode: "0644"
 
-- name: common:journald:config_dir:create
+- name: "common:journald:config_dir:create"
   ansible.builtin.file:
-    path: /etc/systemd/journald.conf.d
-    state: directory
+    path: "/etc/systemd/journald.conf.d"
+    state: "directory"
     mode: "0755"
 
-- name: common:journald:configure
+- name: "common:journald:configure"
   ansible.builtin.template:
-    src: etc/systemd/journald.conf.d/00-ansible.conf.j2
-    dest: /etc/systemd/journald.conf.d/00-ansible.conf
+    src: "etc/systemd/journald.conf.d/00-ansible.conf.j2"
+    dest: "/etc/systemd/journald.conf.d/00-ansible.conf"
     mode: "0644"
-  notify: common:journald|restart
+  notify: "common:journald|restart"
 
-- name: common:systemd:config_dir:create
+- name: "common:systemd:config_dir:create"
   ansible.builtin.file:
-    path: /etc/systemd/system.conf.d
-    state: directory
+    path: "/etc/systemd/system.conf.d"
+    state: "directory"
     mode: "0755"
 
-- name: common:systemd:configure
+- name: "common:systemd:configure"
   ansible.builtin.template:
-    src: etc/systemd/system.conf.d/00-ansible.conf.j2
-    dest: /etc/systemd/system.conf.d/00-ansible.conf
+    src: "etc/systemd/system.conf.d/00-ansible.conf.j2"
+    dest: "/etc/systemd/system.conf.d/00-ansible.conf"
     mode: "0644"
-  notify: common:systemd|daemon-reexec
+  notify: "common:systemd|daemon-reexec"
 
-- name: common:resolved:config_dir:create
+- name: "common:resolved:config_dir:create"
   ansible.builtin.file:
-    path: /etc/systemd/resolved.conf.d
-    state: directory
+    path: "/etc/systemd/resolved.conf.d"
+    state: "directory"
     mode: "0755"
 
-- name: common:resolved:configure
+- name: "common:resolved:configure"
   ansible.builtin.template:
-    src: etc/systemd/resolved.conf.d/00-ansible.conf.j2
-    dest: /etc/systemd/resolved.conf.d/00-ansible.conf
+    src: "etc/systemd/resolved.conf.d/00-ansible.conf.j2"
+    dest: "/etc/systemd/resolved.conf.d/00-ansible.conf"
     mode: "0644"
-  notify: common:resolved|restart
+  notify: "common:resolved|restart"

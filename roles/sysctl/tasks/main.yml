@@ -1,11 +1,11 @@
 ---
-- name: sysctl:config_dir:create
+- name: "sysctl:config_dir:create"
   ansible.builtin.file:
     path: "{{ __sysctl_file | dirname }}"
-    state: directory
+    state: "directory"
     mode: "0755"
 
-- name: sysctl:configure
+- name: "sysctl:configure"
   ansible.posix.sysctl:
     name: "{{ item.name }}"
     value: "{{ item.value | default('') }}"

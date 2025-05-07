@@ -12,4 +12,13 @@ dev = [
     "pre-commit-hooks>=5.0.0",
     "shellcheck-py>=0.10.0.1",
     "ansible-lint>=25.1.3",
+    "yamlfix>=1.17.0",
 ]
+
+[tool.yamlfix]
+line_length = 120
+whitelines = 1
+section_whitelines = 1
+quote_basic_values = true
+quote_representation = '"'
+sequence_style = "block_style"

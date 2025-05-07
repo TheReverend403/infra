@@ -1,26 +1,26 @@
 ---
-- name: Apply common configuration
-  hosts: all
+- name: "Apply common configuration"
+  hosts: "all"
   roles:
-    - common
-    - sysctl
+    - "common"
+    - "sysctl"
 
-- name: Install uv
-  hosts: all
+- name: "Install uv"
+  hosts: "all"
   roles:
-    - uv
+    - "uv"
 
-- name: Set up msmtp
-  hosts: all
+- name: "Set up msmtp"
+  hosts: "all"
   roles:
-    - msmtp
+    - "msmtp"
 
-- name: Set up telegram-send
-  hosts: all
+- name: "Set up telegram-send"
+  hosts: "all"
   roles:
-    - telegram-send
+    - "telegram-send"
 
-- name: Set up ZFS maintenance systemd units
-  hosts: zfs
+- name: "Set up ZFS maintenance systemd units"
+  hosts: "zfs"
   roles:
-    - zfs-maintenance
+    - "zfs-maintenance"

@@ -1,5 +1,5 @@
 ---
-- name: Speedtest
-  hosts: all
+- name: "Speedtest"
+  hosts: "all"
   roles:
-    - speedtest
+    - "speedtest"

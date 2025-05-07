@@ -1,12 +1,16 @@
 ---
-__sysctl_file: /etc/sysctl.d/90-ansible.conf
+__sysctl_file: "/etc/sysctl.d/90-ansible.conf"
+
 __sysctl_base_vars:
-  - name: net.ipv6.route.max_size
+  - name: "net.ipv6.route.max_size"
     value: 65000
-    comment: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=861115
-  - name: kernel.core_pattern
-    value: /dev/null
-  - name: net.ipv4.tcp_syncookies
+    comment: "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=861115"
+
+  - name: "kernel.core_pattern"
+    value: "/dev/null"
+
+  - name: "net.ipv4.tcp_syncookies"
     value: 1
-  - name: net.ipv4.tcp_synack_retries
+
+  - name: "net.ipv4.tcp_synack_retries"
     value: 5
