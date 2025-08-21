@@ -1,7 +1,9 @@
 ---
-- name: "apt-unattended-upgrades:install"
+- name: "apt-unattended-upgrades:install_packages"
   ansible.builtin.package:
-    name: "unattended-upgrades"
+    name:
+      - "unattended-upgrades"
+      - "apt-listchanges"
 
 - name: "apt-unattended-upgrades:configure"
   ansible.builtin.template:
