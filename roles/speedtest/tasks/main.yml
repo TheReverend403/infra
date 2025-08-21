@@ -8,9 +8,9 @@
 - name: "speedtest:run"
   ansible.builtin.command:
     cmd: "python3 {{ __speedtest_script_destination }} --simple --secure"
-  register: "output"
+  register: "__speedtest_output"
   changed_when: false
 
 - name: "speedtest:show_results"
   ansible.builtin.debug:
-    msg: "{{ output.stdout_lines }}"
+    msg: "{{ __speedtest_output.stdout_lines }}"

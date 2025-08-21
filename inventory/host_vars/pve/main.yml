@@ -1,7 +1,9 @@
 ---
+systemd_resolved_enabled: false
+zfs_install_timers: false
+
 sysctl_vars:
   - name: "net.core.rmem_max"
     value: 7500000
-
   - name: "net.core.wmem_max"
     value: 7500000

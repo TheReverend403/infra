@@ -1,6 +1,3 @@
-[submodule "mitogen"]
-	path = mitogen
-	url = https://github.com/mitogen-hq/mitogen
 [submodule "roles/zfs-maintenance"]
 	path = roles/zfs-maintenance
 	url = git@git.ev.net.uk:evolvingnetworks/ansible-role-zfs-maintenance.git

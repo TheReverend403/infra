@@ -1,0 +1,17 @@
+#
+# {{ ansible_managed }}
+#
+
+[cmdline]
+frontend=pager
+email_address={{ apt_unattended_upgrades_mail_to }}
+confirm=1
+save_seen=/var/lib/apt/listchanges.db
+which=both
+
+[apt]
+frontend=mail
+email_address={{ apt_unattended_upgrades_mail_to }}
+confirm=0
+save_seen=/var/lib/apt/listchanges.db
+which=both

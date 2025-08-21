@@ -6,12 +6,12 @@
 - name: "msmtp:sendmail:get_version"
   ansible.builtin.command:
     cmd: "sendmail --version"
-  register: "sendmail_version"
+  register: "__msmtp_sendmail_version"
   changed_when: false
 
 - name: "msmtp:sendmail:check_wrapper"
   ansible.builtin.assert:
-    that: "'msmtp' in sendmail_version.stdout_lines[0]"
+    that: "'msmtp' in __msmtp_sendmail_version.stdout_lines[0]"
 
 - name: "msmtp:config_dir:create"
   ansible.builtin.file:

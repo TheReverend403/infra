@@ -1,0 +1,5 @@
+---
+apt_unattended_upgrades: true
+apt_unattended_upgrades_listchanges: true
+# apt_unattended_upgrades_mail_to: ""
+# apt_unattended_upgrades_mail_sender: ""

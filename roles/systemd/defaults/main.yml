@@ -1,0 +1,4 @@
+---
+# systemd_journald_system_max_use: 1G  # noqa: var-naming[no-role-prefix]
+# systemd_journald_retention_sec: 7d  # noqa: var-naming[no-role-prefix]
+systemd_resolved_enabled: true

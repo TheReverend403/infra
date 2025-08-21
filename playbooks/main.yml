@@ -3,24 +3,30 @@
   hosts: "all"
   roles:
     - "common"
-    - "sysctl"
+    - "systemd"
 
-- name: "Install uv"
-  hosts: "all"
+- name: "Apply sysctl configuration"
+  hosts: "all,!netmon"
   roles:
-    - "uv"
+    - "sysctl"
 
 - name: "Set up msmtp"
   hosts: "all"
   roles:
     - "msmtp"
 
-- name: "Set up telegram-send"
-  hosts: "all"
+- name: "Set up apt unattended-upgrades and listchanges"
+  hosts: "debian"
   roles:
+    - "apt-unattended-upgrades"
+
+- name: "Set up telegram-send"
+  hosts: "zfs"
+  roles:
+    - "uv"
     - "telegram-send"
 
-- name: "Set up ZFS maintenance systemd units"
+- name: "Set up ZFS maintenance and alerts"
   hosts: "zfs"
   roles:
     - "zfs-maintenance"
