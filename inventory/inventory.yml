@@ -11,31 +11,31 @@ all:
       ansible_host: "monitor.lwatson.dev"
     pve:
       ansible_user: "root"
-      ansible_host: "pve"
+      ansible_host: "pve.internal.home.lwatson.dev"
     pve-router:
       ansible_user: "root"
-      ansible_host: "pve-router"
-    netmon:
+      ansible_host: "pve-router.hedgehog-skate.ts.net"
+    pve-netmon:
       ansible_user: "root"
-      ansible_host: "pve-netmon"
-    caddy:
+      ansible_host: "netmon.hedgehog-skate.ts.net"
+    pve-caddy:
       ansible_user: "root"
-      ansible_host: "pve-caddy"
-    vaultwarden:
+      ansible_host: "caddy.internal.home.lwatson.dev"
+    pve-vaultwarden:
       ansible_user: "root"
-      ansible_host: "pve-vaultwarden"
-    postgresql:
+      ansible_host: "vaultwarden.internal.home.lwatson.dev"
+    pve-postgresql:
       ansible_user: "root"
-      ansible_host: "pve-postgresql"
-    mqtt:
+      ansible_host: "postgresql.internal.home.lwatson.dev"
+    pve-mqtt:
       ansible_user: "root"
-      ansible_host: "pve-mqtt"
-    zigbee2mqtt:
+      ansible_host: "mqtt.internal.home.lwatson.dev"
+    pve-zigbee2mqtt:
       ansible_user: "root"
-      ansible_host: "pve-zigbee2mqtt"
-    frigate:
+      ansible_host: "zigbee2mqtt.internal.home.lwatson.dev"
+    pve-frigate:
       ansible_user: "root"
-      ansible_host: "pve-frigate"
+      ansible_host: "frigate.internal.home.lwatson.dev"
 
   children:
     workstations:
@@ -50,6 +50,8 @@ all:
     vms:
       hosts:
         monitor:
+        pve-frigate:
+        pve-vaultwarden:
     zfs:
       hosts:
         luna:
@@ -59,21 +61,30 @@ all:
     debian:
       hosts:
         monitor:
-        netmon:
         pve:
         pve-router:
-        caddy:
-        vaultwarden:
-        postgresql:
-        mqtt:
-        zigbee2mqtt:
-        frigate:
+        pve-netmon:
+        pve-caddy:
+        pve-vaultwarden:
+        pve-postgresql:
+        pve-mqtt:
+        pve-zigbee2mqtt:
+        pve-frigate:
     lxc:
       hosts:
         pve-router:
-        caddy:
-        vaultwarden:
-        postgresql:
-        mqtt:
-        zigbee2mqtt:
-        frigate:
+        pve-netmon:
+        pve-caddy:
+        pve-postgresql:
+        pve-mqtt:
+        pve-zigbee2mqtt:
+    pveguests:
+      hosts:
+        pve-router:
+        pve-netmon:
+        pve-caddy:
+        pve-postgresql:
+        pve-mqtt:
+        pve-zigbee2mqtt:
+        pve-frigate:
+        pve-vaultwarden:
