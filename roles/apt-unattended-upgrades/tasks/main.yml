@@ -18,4 +18,4 @@
     mode: "0644"
   when:
     - "apt_unattended_upgrades_listchanges"
-    - "apt_unattended_upgrades_mail_to|default(\"\") != \"\""
+    - "apt_unattended_upgrades_mail_to|default('') != ''"
