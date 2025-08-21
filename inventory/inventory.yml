@@ -9,12 +9,33 @@ all:
       ansible_host: "nova.hedgehog-skate.ts.net"
     monitor:
       ansible_host: "monitor.lwatson.dev"
-    netmon:
-      ansible_user: "root"
-      ansible_host: "netmon.hedgehog-skate.ts.net"
     pve:
       ansible_user: "root"
-      ansible_host: "192.168.68.57"
+      ansible_host: "pve"
+    pve-router:
+      ansible_user: "root"
+      ansible_host: "pve-router"
+    netmon:
+      ansible_user: "root"
+      ansible_host: "pve-netmon"
+    caddy:
+      ansible_user: "root"
+      ansible_host: "pve-caddy"
+    vaultwarden:
+      ansible_user: "root"
+      ansible_host: "pve-vaultwarden"
+    postgresql:
+      ansible_user: "root"
+      ansible_host: "pve-postgresql"
+    mqtt:
+      ansible_user: "root"
+      ansible_host: "pve-mqtt"
+    zigbee2mqtt:
+      ansible_user: "root"
+      ansible_host: "pve-zigbee2mqtt"
+    frigate:
+      ansible_user: "root"
+      ansible_host: "pve-frigate"
 
   children:
     workstations:
@@ -40,3 +61,19 @@ all:
         monitor:
         netmon:
         pve:
+        pve-router:
+        caddy:
+        vaultwarden:
+        postgresql:
+        mqtt:
+        zigbee2mqtt:
+        frigate:
+    lxc:
+      hosts:
+        pve-router:
+        caddy:
+        vaultwarden:
+        postgresql:
+        mqtt:
+        zigbee2mqtt:
+        frigate:

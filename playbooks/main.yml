@@ -6,12 +6,12 @@
     - "systemd"
 
 - name: "Apply sysctl configuration"
-  hosts: "all,!netmon"
+  hosts: "all,!lxc"
   roles:
     - "sysctl"
 
 - name: "Set up msmtp"
-  hosts: "all"
+  hosts: "all,!lxc"
   roles:
     - "msmtp"
 

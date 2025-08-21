@@ -5,5 +5,3 @@ ansible_python_interpreter: "/usr/bin/python3"
 systemd_journald_retention_sec: "7d"
 
 msmtp_host: "email-smtp.eu-north-1.amazonaws.com"
-
-apt_unattended_upgrades_mail_sender: "{{ msmtp_from_addr }}"
