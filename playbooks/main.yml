@@ -11,7 +11,7 @@
     - "sysctl"
 
 - name: "Set up msmtp"
-  hosts: "all,!lxc"
+  hosts: "all"
   roles:
     - "msmtp"
 
