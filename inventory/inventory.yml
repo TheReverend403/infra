@@ -5,8 +5,8 @@ all:
       ansible_connection: "local"
     luna:
       ansible_host: "luna.lwatson.dev"
-    nova:
-      ansible_host: "nova.hedgehog-skate.ts.net"
+    # nova:
+    #   ansible_host: "nova.hedgehog-skate.ts.net"
     monitor:
       ansible_host: "monitor.lwatson.dev"
     pve:
@@ -41,7 +41,7 @@ all:
     workstations:
       hosts:
         serenity:
-        nova:
+        # nova:
     servers:
       hosts:
         luna:
@@ -56,7 +56,7 @@ all:
       hosts:
         luna:
         serenity:
-        nova:
+        # nova:
         pve:
     debian:
       hosts:
