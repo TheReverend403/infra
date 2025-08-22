@@ -4,24 +4,13 @@ zfs_scrub_pools:
   - "luna-data"
 
 zfs_trim_pools:
-  - "luna"
+  - luna
 
-zfs_scrub_schedule: "Mon *-*-* 0:00"
-zfs_trim_schedule: "Tue *-*-* 0:00"
+# First saturday and sunday of the month.
+zfs_scrub_schedule: "Sat *-*-1..7 03:00"
+zfs_trim_schedule: "Sun *-*-1..7 03:00"
 
 sysctl_vars:
-  - name: "net.bridge.bridge-nf-call-arptables"
-    value: 0
-    comment: "https://serverfault.com/questions/963759/docker-breaks-libvirt-bridge-network + https://wiki.libvirt.org/page/Net.bridge.bridge-nf-call_and_sysctl.conf"
-
-  - name: "net.bridge.bridge-nf-call-ip6tables"
-    value: 0
-    comment: "https://serverfault.com/questions/963759/docker-breaks-libvirt-bridge-network + https://wiki.libvirt.org/page/Net.bridge.bridge-nf-call_and_sysctl.conf"
-
-  - name: "net.bridge.bridge-nf-call-iptables"
-    value: 0
-    comment: "https://serverfault.com/questions/963759/docker-breaks-libvirt-bridge-network + https://wiki.libvirt.org/page/Net.bridge.bridge-nf-call_and_sysctl.conf"
-
   - name: "net.core.rmem_max"
     value: 7500000
 
