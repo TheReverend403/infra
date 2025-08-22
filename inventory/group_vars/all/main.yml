@@ -5,3 +5,17 @@ ansible_python_interpreter: "/usr/bin/python3"
 systemd_journald_retention_sec: "7d"
 
 msmtp_host: "email-smtp.eu-north-1.amazonaws.com"
+
+needrestart_overrides:
+  ^systemd-(udevd|networkd|resolved): 0
+  ^(docker|containerd): 0
+  ^postgresql: 0
+  ^(mysql|mariadb): 0
+  ^caddy: 0
+  ^mosquitto: 0
+  ^zigbee2mqtt: 0
+  ^tailscaled: 0
+  ^dnsmasq: 0
+  ^unbound: 0
+  ^stubby: 0
+  ^firewalld: 0

@@ -20,6 +20,11 @@
   roles:
     - "apt-unattended-upgrades"
 
+- name: "Set up needrestart"
+  hosts: "all"
+  roles:
+    - "needrestart"
+
 - name: "Set up telegram-send"
   hosts: "zfs"
   roles:
