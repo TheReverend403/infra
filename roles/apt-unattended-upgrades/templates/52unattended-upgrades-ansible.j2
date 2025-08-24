@@ -8,7 +8,10 @@ Unattended-Upgrade::Origins-Pattern {
 "origin=Debian,codename=${distro_codename}-security,label=Debian-Security";
 };
 
-{% if apt_unattended_upgrades_mail_to|default("") != "" and apt_unattended_upgrades_mail_sender|default("") != "" %}
+{% if apt_unattended_upgrades_mail_to|default("") != "" %}
 Unattended-Upgrade::Mail "{{ apt_unattended_upgrades_mail_to }}";
+{% endif %}
+
+{% if apt_unattended_upgrades_mail_sender|default("") != "" %}
 Unattended-Upgrade::Sender "Unattended-Upgrades <{{ apt_unattended_upgrades_mail_sender }}>";
     {% endif %}

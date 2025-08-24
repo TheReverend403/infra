@@ -9,10 +9,10 @@
   ansible.builtin.template:
     src: "52unattended-upgrades-ansible.j2"
     dest: "/etc/apt/apt.conf.d/52unattended-upgrades-ansible"
-    mode: "0644"
+    mode: "0640"
 
 - name: "apt-unattended-upgrades:listchanges:configure"
   ansible.builtin.template:
     src: "listchanges.conf.j2"
     dest: "/etc/apt/listchanges.conf"
-    mode: "0644"
+    mode: "0640"
