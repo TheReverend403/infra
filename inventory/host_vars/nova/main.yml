@@ -1,11 +1,4 @@
 ---
-sysctl_vars:
-  - name: "net.core.rmem_max"
-    value: 7500000
-
-  - name: "net.core.wmem_max"
-    value: 7500000
-
 zfs_scrub_pools:
   - "nova"
 

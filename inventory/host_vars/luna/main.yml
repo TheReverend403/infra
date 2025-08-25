@@ -9,10 +9,3 @@ zfs_trim_pools:
 # First saturday and sunday of the month.
 zfs_scrub_schedule: "Sat *-*-1..7 03:00"
 zfs_trim_schedule: "Sun *-*-1..7 03:00"
-
-sysctl_vars:
-  - name: "net.core.rmem_max"
-    value: 7500000
-
-  - name: "net.core.wmem_max"
-    value: 7500000
