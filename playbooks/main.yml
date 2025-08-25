@@ -23,13 +23,13 @@
 - name: "Set up needrestart"
   hosts: "all"
   roles:
-    - "needrestart"
+    - needrestart
 
-- name: "Set up telegram-send"
-  hosts: "zfs"
-  roles:
-    - "uv"
-    - "telegram-send"
+# - name: "Set up telegram-send"
+#   hosts: "zfs"
+#   roles:
+#     - "uv"
+#     - "telegram-send"
 
 - name: "Set up ZFS maintenance and alerts"
   hosts: "zfs"
