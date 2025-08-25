@@ -18,3 +18,5 @@ Unattended-Upgrade::Mail "{{ apt_unattended_upgrades_mail_to }}";
 {% if apt_unattended_upgrades_mail_sender|default("") != "" %}
 Unattended-Upgrade::Sender "Unattended-Upgrades <{{ apt_unattended_upgrades_mail_sender }}>";
 {% endif %}
+
+Unattended-Upgrade::SyslogEnable "true";
