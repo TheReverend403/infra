@@ -2,7 +2,7 @@
 # {{ ansible_managed }}
 #
 
-{% if apt_unattended_upgrades_mail_to|default('') != '' %}
+{% if apt_unattended_upgrades_mail_to|default("") != "" %}
 [cmdline]
 frontend=pager
 email_address={{ apt_unattended_upgrades_mail_to }}
