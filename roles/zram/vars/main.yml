@@ -1,0 +1,6 @@
+---
+__zram_system_packages:
+  Gentoo:
+    - "sys-apps/zram-generator"
+  Debian:
+    - "systemd-zram-generator"

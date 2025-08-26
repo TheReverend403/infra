@@ -8,12 +8,12 @@
 - name: "Apply sysctl configuration"
   hosts: "all,!lxc"
   roles:
-    - sysctl
+    - "sysctl"
 
-# - name: "Set up msmtp"
-#   hosts: "all,!ntfy"
-#   roles:
-#     - "msmtp"
+- name: "Set up zram"
+  hosts: "all,!lxc"
+  roles:
+    - "zram"
 
 - name: "Set up apt unattended-upgrades and listchanges"
   hosts: "debian"

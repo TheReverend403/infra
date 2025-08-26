@@ -1,0 +1,25 @@
+---
+- name: "zram:dependencies:install"
+  ansible.builtin.package:
+    name: "{{ __zram_system_packages[ansible_distribution] }}"
+
+- name: "zram:config:create_dir"
+  ansible.builtin.file:
+    path: "/etc/systemd/zram-generator.conf.d"
+    state: "directory"
+    mode: "0755"
+
+- name: "zram:configure"
+  ansible.builtin.template:
+    src: "00-ansible.conf.j2"
+    dest: "/etc/systemd/zram-generator.conf.d/00-ansible.conf"
+    mode: "0644"
+    trim_blocks: true
+    lstrip_blocks: true
+
+- name: "zram:start"
+  ansible.builtin.systemd:
+    name: "/dev/{{ item.key }}"
+    state: "started"
+    daemon_reload: true
+  loop: "{{ zram_devices | dict2items }}"

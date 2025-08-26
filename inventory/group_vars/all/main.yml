@@ -25,3 +25,8 @@ sysctl_vars:
 
   - name: "net.core.wmem_max"
     value: 7500000
+
+zram_devices:
+  zram0:
+    zram-size: "ram / 2"
+    compression-algorithm: "lzo-rle"
