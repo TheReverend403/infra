@@ -1,0 +1,14 @@
+---
+extends: "default"
+ignore-from-file: [".gitignore", ".yamlignore"]
+rules:
+  line-length: "disable"
+  quoted-strings: "enable"
+  comments:
+    min-spaces-from-content: 1
+  comments-indentation: false
+  braces:
+    max-spaces-inside: 1
+  octal-values:
+    forbid-implicit-octal: true
+    forbid-explicit-octal: true
