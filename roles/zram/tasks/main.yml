@@ -14,12 +14,10 @@
     src: "00-ansible.conf.j2"
     dest: "/etc/systemd/zram-generator.conf.d/00-ansible.conf"
     mode: "0644"
-    trim_blocks: true
-    lstrip_blocks: true
 
 - name: "zram:start"
   ansible.builtin.systemd:
-    name: "/dev/{{ item.key }}"
+    name: "systemd-zram-setup@{{ item.key }}.service"
     state: "started"
     daemon_reload: true
   loop: "{{ zram_devices | dict2items }}"
