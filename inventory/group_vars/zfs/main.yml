@@ -1,5 +1,4 @@
 ---
-zfs_zed_extra_options:
-  ZED_NTFY_URL: "{{ _zed_ntfy_url }}"
-  ZED_NTFY_TOPIC: "{{ _zed_ntfy_topic }}"
-  ZED_NTFY_ACCESS_TOKEN: "{{ _zed_ntfy_access_token }}"
+zfs_zed_email_addr: "none"
+zfs_zed_email_prog: "/usr/local/sbin/uvx telegram-send"
+zfs_zed_email_opts: "-g --pre --stdin --disable-web-page-preview --silent"

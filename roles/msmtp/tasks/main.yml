@@ -3,16 +3,6 @@
   ansible.builtin.package:
     name: "{{ __msmtp_system_packages[ansible_distribution] }}"
 
-- name: "msmtp:sendmail:get_version"
-  ansible.builtin.command:
-    cmd: "sendmail --version"
-  register: "__msmtp_sendmail_version"
-  changed_when: false
-
-- name: "msmtp:sendmail:check_wrapper"
-  ansible.builtin.assert:
-    that: "'msmtp' in __msmtp_sendmail_version.stdout_lines[0]"
-
 - name: "msmtp:config_dir:create"
   ansible.builtin.file:
     path: "{{ msmtp_config_file | dirname }}"
@@ -24,10 +14,3 @@
     src: "msmtp/config.j2"
     dest: "{{ msmtp_config_file }}"
     mode: "0640"
-
-- name: "msmtp:mailrc:set_default"
-  ansible.builtin.lineinfile:
-    path: "/etc/mail.rc"
-    regexp: "^set mta=/usr/bin/msmtp$"
-    line: "set mta=/usr/bin/msmtp"
-  when: "msmtp_set_default"

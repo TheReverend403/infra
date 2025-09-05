@@ -25,12 +25,14 @@
   roles:
     - "needrestart"
 
-- name: "Install uv for zfs_autobackup"
-  hosts: "zfs"
+- name: "Set up msmtp"
+  hosts: "all"
   roles:
-    - "uv"
+    - "msmtp"
 
 - name: "Set up ZFS maintenance and alerts"
   hosts: "zfs"
   roles:
+    - "uv"
+    - "telegram-send"
     - "zfs-maintenance"

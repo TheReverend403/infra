@@ -9,9 +9,6 @@ all:
     #   ansible_host: "nova.hedgehog-skate.ts.net"
     monitor:
       ansible_host: "monitor.lwatson.dev"
-    ntfy:
-      ansible_user: "root"
-      ansible_host: "ntfy.lwatson.dev"
     pve:
       ansible_user: "root"
       ansible_host: "pve.internal.home.lwatson.dev"
@@ -50,11 +47,9 @@ all:
         luna:
         monitor:
         pve:
-        ntfy:
     vms:
       hosts:
         monitor:
-        ntfy:
         pve-frigate:
         pve-vaultwarden:
     zfs:
@@ -66,7 +61,6 @@ all:
     debian:
       hosts:
         monitor:
-        ntfy:
         pve:
         pve-router:
         pve-netmon:

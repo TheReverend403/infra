@@ -5,6 +5,8 @@ ansible_python_interpreter: "/usr/bin/python3"
 systemd_journald_retention_sec: "7d"
 systemd_journald_system_max_use: "1G"
 
+msmtp_host: "email-smtp.eu-north-1.amazonaws.com"
+
 needrestart_overrides:
   ^systemd-(udevd|networkd|resolved): 0
   ^(docker|containerd): 0
