@@ -5,3 +5,4 @@ apt_unattended_upgrades_origins:
   - "origin=Tailscale,codename=${distro_codename},label=Tailscale"
   - "origin=apt.postgresql.org,codename=${distro_codename}-pgdg,label=PostgreSQL for Debian/Ubuntu repository"
   - "origin=cloudsmith/caddy/stable,codename=${distro_codename}"
+  - "origin=Proxmox,codename=${distro_codename},label=Proxmox Debian Repository"

@@ -26,7 +26,7 @@
     - "needrestart"
 
 - name: "Set up msmtp"
-  hosts: "all"
+  hosts: "all,!nova"
   roles:
     - "msmtp"
 
