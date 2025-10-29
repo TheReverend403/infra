@@ -52,6 +52,7 @@ all:
         monitor:
         pve-frigate:
         pve-vaultwarden:
+        pve-zigbee2mqtt:
     zfs:
       hosts:
         luna:
@@ -82,7 +83,6 @@ all:
         pve-caddy:
         pve-postgresql:
         pve-mqtt:
-        pve-zigbee2mqtt:
     pveguests:
       hosts:
         pve-router:
